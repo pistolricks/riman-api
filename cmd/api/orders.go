@@ -155,13 +155,6 @@ func (app *application) createOrderHandler(w http.ResponseWriter, r *http.Reques
 		Version:                 input.Version,
 	}
 
-	v := validator.New()
-
-	if data.ValidateOrder(v, order); !v.Valid() {
-		app.failedValidationResponse(w, r, v.Errors)
-		return
-	}
-
 	err = app.models.Orders.Insert(order)
 	if err != nil {
 		app.serverErrorResponse(w, r, err)
