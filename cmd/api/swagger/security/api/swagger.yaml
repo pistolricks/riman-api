@@ -1,0 +1,438 @@
+---
+swagger: "2.0"
+info:
+  description: "A Microsoft WebApi2 application. For use by Jeunesse and its Partners,\
+    \ this api has a focus on product and order creation"
+  version: "v2"
+  title: "Security-Api v2"
+host: "security-api.riman.com"
+schemes:
+- "https"
+paths:
+  /api/v2/token/joffice-token/{jofficeToken}:
+    get:
+      tags:
+      - "Authentication"
+      summary: "Authenticate using the joffice token."
+      operationId: "Authentication_AuthenticateByJOfficeToken"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "jofficeToken"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "JofficeToken"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+  /api/v2/token:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Used to authenticate a member."
+      operationId: "Authentication_AuthenticateUser"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "request"
+        required: true
+        schema:
+          $ref: "#/definitions/TokenRequestModel"
+        x-exportParamName: "Request"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+  /api/v2/token/logout:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Logs a valid member token out and ends their session."
+      operationId: "Authentication_Logout"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters: []
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/wallet/login:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Perform wallet login"
+      operationId: "Authentication_AuthenticateUserToWallet"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "request"
+        required: true
+        schema:
+          $ref: "#/definitions/WalletTokenRequestModel"
+        x-exportParamName: "Request"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+  /api/v2/reports/login:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Used to authenticate users for report access"
+      operationId: "Authentication_ReportsLogin"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "request"
+        required: true
+        schema:
+          $ref: "#/definitions/TokenRequestModel"
+        x-exportParamName: "Request"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+  /api/v2/token/reissue:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Used to reissue an existing token that is not yet expired."
+      operationId: "Authentication_ReIssue"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters: []
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+  /api/v2/wallet/logout:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Perform wallet logout"
+      operationId: "Authentication_AuthenticateUserToWallet"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters: []
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "boolean"
+  /api/v2/token/validate:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Used to verify an existing token that is not yet expired. Does not\
+        \ reissue new token"
+      operationId: "Authentication_Validate"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters: []
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "boolean"
+  /api/v2/reports/login/create:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Used to create a report login account"
+      operationId: "Authentication_CreateReportsLogin"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "request"
+        required: true
+        schema:
+          $ref: "#/definitions/ReportLoginFormModel"
+        x-exportParamName: "Request"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+  /api/v2/CheckAttemptsAndLogin:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Similar\_ api call to /token but include check for security questions\
+        \ and captcha, have to create new one, cause return model is different from\
+        \ /token. Maybe in a feature \r\nwe have to deprecate  /token and use /checkAttemptsAndLogin\
+        \ everywhere"
+      operationId: "Authentication_AuthenticateUserV2"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "request"
+        required: true
+        schema:
+          $ref: "#/definitions/TokenRequestModel"
+        x-exportParamName: "Request"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+  /api/v2/token/tracking/{TrackingId}:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Returns auth token for use in an abandoned order checkout."
+      operationId: "Authentication_GetTokenByTrackingId"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "TrackingId"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "TrackingId"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+  /api/v2/password/validate/{password}:
+    post:
+      tags:
+      - "Authentication"
+      summary: "Validates if password follows the business rules for a password. Case,\
+        \ Digit, Special charactesr etc."
+      operationId: "Authentication_ValidatePassword"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "password"
+        in: "path"
+        required: true
+        type: "string"
+        x-exportParamName: "Password"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/PasswordRulesModel"
+  /api/v2/smartmobile/authenticate:
+    post:
+      tags:
+      - "SmartMobile"
+      summary: "Login for SmartMobile"
+      operationId: "SmartMobile_Login"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "model"
+        description: "Model for request"
+        required: true
+        schema:
+          $ref: "#/definitions/SmartMobileLoginRequest"
+        x-exportParamName: "Model"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/smartmobile/authenticate-token:
+    post:
+      tags:
+      - "SmartMobile"
+      summary: "Validates a Joffice token or JWT Token"
+      operationId: "SmartMobile_Validate"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "request"
+        description: "The request model with either JWTToken set or JOffice Token\
+          \ set"
+        required: true
+        schema:
+          $ref: "#/definitions/SmartMobileValidateTokenRequest"
+        x-exportParamName: "Request"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+securityDefinitions:
+  apiKey:
+    description: "API Key Authentication"
+    type: "apiKey"
+    name: "authToken"
+    in: "header"
+definitions:
+  TokenRequestModel:
+    type: "object"
+    required:
+    - "userName"
+    properties:
+      userName:
+        type: "string"
+      password:
+        type: "string"
+      signupKey:
+        type: "string"
+    example:
+      password: "password"
+      signupKey: "signupKey"
+      userName: "userName"
+  WalletTokenRequestModel:
+    type: "object"
+    required:
+    - "userName"
+    properties:
+      questionPk:
+        type: "integer"
+        format: "int32"
+      answer:
+        type: "string"
+      captchaId:
+        type: "string"
+      userEnteredCaptchaCode:
+        type: "string"
+      userName:
+        type: "string"
+      password:
+        type: "string"
+      signupKey:
+        type: "string"
+    example:
+      password: "password"
+      questionPk: 0
+      signupKey: "signupKey"
+      answer: "answer"
+      userEnteredCaptchaCode: "userEnteredCaptchaCode"
+      userName: "userName"
+      captchaId: "captchaId"
+  ReportLoginFormModel:
+    type: "object"
+    required:
+    - "password"
+    - "userName"
+    properties:
+      userName:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      password:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+    example:
+      password: "password"
+      userName: "userName"
+  PasswordRulesModel:
+    type: "object"
+    properties:
+      isValid:
+        type: "boolean"
+      message:
+        type: "string"
+    example:
+      isValid: true
+      message: "message"
+  SmartMobileLoginRequest:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+      deviceCultureName:
+        type: "string"
+    example:
+      password: "password"
+      username: "username"
+      deviceCultureName: "deviceCultureName"
+  SmartMobileValidateTokenRequest:
+    type: "object"
+    properties:
+      jwtToken:
+        type: "string"
+      jofficeToken:
+        type: "string"
+      deviceCultureName:
+        type: "string"
+    example:
+      jofficeToken: "jofficeToken"
+      jwtToken: "jwtToken"
+      deviceCultureName: "deviceCultureName"
