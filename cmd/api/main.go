@@ -13,6 +13,7 @@ import (
 	"sync"
 	"time"
 
+	_ "github.com/pistolricks/riman-api/docs"
 	"github.com/pistolricks/riman-api/internal/data"
 	"github.com/pistolricks/riman-api/internal/mailer"
 	"github.com/pistolricks/riman-api/internal/vcs"
