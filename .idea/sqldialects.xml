@@ -9,6 +9,10 @@
     <file url="file://$PROJECT_DIR$/migrations/000005_create_tokens_table.up.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/migrations/000006_add_permissions.down.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/migrations/000006_add_permissions.up.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/migrations/000007_create_clients_table.down.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/migrations/000007_create_clients_table.up.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/migrations/000008_create_customers_table.down.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/migrations/000008_create_customers_table.up.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/migrations/000013_create_products_table.down.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/migrations/000013_create_products_table.up.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/migrations/000014_create_shopify_orders_table.down.sql" dialect="PostgreSQL" />

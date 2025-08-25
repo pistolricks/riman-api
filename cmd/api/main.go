@@ -13,10 +13,10 @@ import (
 	"sync"
 	"time"
 
-	sw "github.com/pistolricks/riman-api/cmd/api/swagger/security"
 	_ "github.com/pistolricks/riman-api/docs"
 	"github.com/pistolricks/riman-api/internal/data"
 	"github.com/pistolricks/riman-api/internal/mailer"
+	security "github.com/pistolricks/riman-api/internal/security"
 	"github.com/pistolricks/riman-api/internal/vcs"
 
 	_ "github.com/lib/pq"
@@ -54,12 +54,12 @@ type config struct {
 }
 
 type application struct {
-	config     config
-	logger     *slog.Logger
-	models     data.Models
-	apiClientr *sw.APIClient
-	mailer     *mailer.Mailer
-	wg         sync.WaitGroup
+	config   config
+	logger   *slog.Logger
+	models   data.Models
+	security *security.APIClient
+	mailer   *mailer.Mailer
+	wg       sync.WaitGroup
 }
 
 func main() {
@@ -129,14 +129,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	config := sw.NewConfiguration()
-
-	client := sw.NewAPIClient(config)
-
 	app := &application{
-		config: cfg,
-		logger: logger,
-		models: data.NewModels(db),
+		config:   cfg,
+		logger:   logger,
+		models:   data.NewModels(db),
+		security: security.NewAPIClient(security.NewConfiguration()),
+
 		mailer: mailer,
 	}
 
