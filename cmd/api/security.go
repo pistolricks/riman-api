@@ -5,9 +5,9 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/pistolricks/riman-api/internal/data"
-	"github.com/pistolricks/riman-api/internal/security"
-	"github.com/pistolricks/riman-api/internal/validator"
+	"github.com/pistolricks/riman-api/pkg/data"
+	"github.com/pistolricks/riman-api/pkg/security"
+	"github.com/pistolricks/riman-api/pkg/validator"
 )
 
 func (app *application) secureVendorLoginHandler(w http.ResponseWriter, r *http.Request) {
@@ -113,7 +113,7 @@ func (app *application) secureVendorLogoutHandler(w http.ResponseWriter, r *http
 
 }
 
-func (app *application) secureTokenRefreshHandler(w http.ResponseWriter, r *http.Request) {
+func (app *application) secureTokenReissueHandler(w http.ResponseWriter, r *http.Request) {
 
 	var input struct {
 		Username string `json:"username"`

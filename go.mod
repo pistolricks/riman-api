@@ -3,6 +3,7 @@ module github.com/pistolricks/riman-api
 go 1.25.0
 
 require (
+	github.com/antihax/optional v1.0.0
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/lib/pq v1.10.9
 	github.com/swaggo/swag v1.16.6

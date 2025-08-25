@@ -1,0 +1,3130 @@
+---
+swagger: "2.0"
+info:
+  description: "A Microsoft WebApi2 application. For use by Jeunesse and its Partners,\
+    \ this api has a focus on product and order creation"
+  version: "v2"
+  title: "Cart-Api v2"
+host: "cart-api.riman.com"
+schemes:
+- "https"
+paths:
+  /api/v2/order/taxes/{mainOrdersFk}:
+    get:
+      tags:
+      - "Order"
+      summary: "Gets the tax information for an order."
+      operationId: "Order_GetOrderTaxAmountString"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "mainOrdersFk"
+        in: "path"
+        description: "OrderNumber"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainOrdersFk"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/TaxModel"
+  /api/v2/order/validate-retail-signup:
+    get:
+      tags:
+      - "Order"
+      summary: "Use to check if a retail customer has purchased an upgrade to distributor\
+        \ package and can continue to signup."
+      operationId: "Order_ValidateRetailSignup"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "mainFK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainFK"
+        x-optionalDataType: "Int32"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CheckRetailUpgrageViewModel"
+  /api/v2/orders/{MainOrdersPK}/details:
+    get:
+      tags:
+      - "Order"
+      summary: "Retrieves detailed information for a specific order by its primary\
+        \ key."
+      operationId: "Order_GetOrderDetails"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "mainOrdersPK"
+        in: "query"
+        required: true
+        type: "string"
+        x-exportParamName: "MainOrdersPK"
+      - name: "model.mainOrdersPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "ModelMainOrdersPK"
+        x-optionalDataType: "Int32"
+      - name: "model.email"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelEmail"
+        x-optionalDataType: "String"
+      - name: "model.culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelCulture"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/order/type:
+    get:
+      tags:
+      - "Order"
+      summary: "Retrieves the order type and whether it is an event based on the provided\
+        \ query model."
+      operationId: "Order_GetOrderType"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "model.mainOrdersPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "ModelMainOrdersPK"
+        x-optionalDataType: "Int32"
+      - name: "model.email"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelEmail"
+        x-optionalDataType: "String"
+      - name: "model.culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelCulture"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/order/set-shipping:
+    put:
+      tags:
+      - "Order"
+      summary: "Sets the shipping info on an order."
+      operationId: "Order_SetShippingOnOrder"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "model"
+        description: "SetShippingFormModel model object."
+        required: true
+        schema:
+          $ref: "#/definitions/SetShippingFormModel"
+        x-exportParamName: "Model"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/order/shipping/address/{mainOrdersFK}:
+    put:
+      tags:
+      - "Order"
+      summary: "Updates the shipping address on an order record."
+      operationId: "Order_UpdateOrderShippingAddress"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "mainOrdersFK"
+        in: "path"
+        description: "Main Order PK"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainOrdersFK"
+      - in: "body"
+        name: "model"
+        description: "UpdateOrderShipAddressFormModel model"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateOrderShipAddressFormModel"
+        x-exportParamName: "Model"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/order/set-shipping-autoship/{mainOrdersPK}:
+    put:
+      tags:
+      - "Order"
+      summary: "Sets the shipping info on an autoship order."
+      operationId: "Order_SetShippingOnAutoShipOrder"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "mainOrdersPK"
+        in: "path"
+        description: ""
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainOrdersPK"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/order/items/add-from-cart/{mainOrdersFk}/{cartKey}:
+    put:
+      tags:
+      - "Order"
+      summary: "Used to move the items in the user's cart to an order."
+      operationId: "Order_UpdateOrderItemsFromCart"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "mainOrdersFk"
+        in: "path"
+        description: "Main Orders PK"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainOrdersFk"
+      - name: "cartKey"
+        in: "path"
+        description: "MainCart Unique Identifier"
+        required: true
+        type: "string"
+        format: "uuid"
+        x-exportParamName: "CartKey"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/order:
+    post:
+      tags:
+      - "Order"
+      summary: "Create a new order with basic information"
+      operationId: "Order_CreateOrder"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "model"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/NewOrderFormModel"
+        x-exportParamName: "Model"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CreateOrderViewModel"
+  /api/v2/order/product:
+    post:
+      tags:
+      - "Order"
+      summary: "Adds a product to an order."
+      operationId: "Order_AddProduct"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "model"
+        description: "AddProductFormModelv2 model object"
+        required: true
+        schema:
+          $ref: "#/definitions/AddProductFormModelv2"
+        x-exportParamName: "Model"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/order/payment/creditcard:
+    post:
+      tags:
+      - "Order"
+      summary: "Adds the Credit Card payment information to an order in process"
+      operationId: "Order_AddCCPaymentToOrder"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "model"
+        required: true
+        schema:
+          $ref: "#/definitions/AddCCPaymentAndBillingFormModel"
+        x-exportParamName: "Model"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/order/apply-iterative-discount:
+    post:
+      tags:
+      - "Order"
+      summary: "Used to auto apply main discount config discount if applicable"
+      operationId: "Order_ApplyInterativeDiscount"
+      consumes:
+      - "application/json"
+      - "text/json"
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - in: "body"
+        name: "model"
+        required: true
+        schema:
+          $ref: "#/definitions/ApplyIterativeDiscountFormModel"
+        x-exportParamName: "Model"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/products/brands:
+    get:
+      tags:
+      - "Product"
+      summary: "Extract all product brands"
+      operationId: "Product_GetProductBrands"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters: []
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ProductBrand"
+  /api/v2/products/invalidate-cache:
+    get:
+      tags:
+      - "Product"
+      summary: "Invalidates the local cache"
+      operationId: "Product_InvalidateCache"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters: []
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+  /api/v2/products/categories/{categoryId}:
+    get:
+      tags:
+      - "Product"
+      summary: "Get specific category information"
+      operationId: "Product_GetCategoryById"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "categoryId"
+        in: "path"
+        description: "Product Category PK"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CategoryId"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CategoryModel"
+  /api/v2/products/cap-headers/{country}/{langId}:
+    get:
+      tags:
+      - "Product"
+      summary: "Returns a headers for CAP with CV ranges"
+      operationId: "Product_GetCAPHeadersWithCVRanges"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "country"
+        in: "path"
+        description: "Country"
+        required: true
+        type: "string"
+        x-exportParamName: "Country"
+      - name: "langId"
+        in: "path"
+        description: "LangId"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "LangId"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CAPHeaderModel"
+  /api/v2/products/{productFk}/{cartType}/{culture}:
+    get:
+      tags:
+      - "Product"
+      summary: "Get specific product information"
+      operationId: "Product_GetProductById"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "productFk"
+        in: "path"
+        description: "Product PK"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "ProductFk"
+      - name: "cartType"
+        in: "path"
+        description: "Cart Type"
+        required: true
+        type: "string"
+        default: "R"
+        x-exportParamName: "CartType"
+      - name: "culture"
+        in: "path"
+        description: "Culture"
+        required: true
+        type: "string"
+        default: "en-US"
+        x-exportParamName: "Culture"
+      deprecated: true
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/FullProductViewModel"
+  /api/v2/products/remaining-products:
+    get:
+      tags:
+      - "Product"
+      summary: "Get remaining product quantities"
+      operationId: "Product_GetRemainingProductQuantities"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "model.productIds"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelProductIds"
+        x-optionalDataType: "String"
+      - name: "model.mainPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "ModelMainPK"
+        x-optionalDataType: "Int32"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/RemainingProductQuantitiesModel"
+  /api/v2/products/remaining-signup-products:
+    get:
+      tags:
+      - "Product"
+      summary: "Get remaining sign up product quantities"
+      operationId: "Product_GetRemainingSignUpProductQuantities"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "model.productIds"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelProductIds"
+        x-optionalDataType: "String"
+      - name: "model.mainPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "ModelMainPK"
+        x-optionalDataType: "Int32"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/RemainingProductQuantitiesModel"
+  /api/v2/products/functions:
+    get:
+      tags:
+      - "Product"
+      summary: "Returns a list of functions/purposes for available products"
+      operationId: "Product_GetProductFunctions"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CartType"
+        x-optionalDataType: "String"
+      - name: "countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CountryCode"
+        x-optionalDataType: "String"
+      - name: "culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Culture"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/BrandViewModel"
+  /api/v2/products/categories:
+    get:
+      tags:
+      - "Product"
+      summary: "Get a listing of all available categories"
+      operationId: "Product_GetCategories"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CartType"
+        x-optionalDataType: "String"
+      - name: "countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CountryCode"
+        x-optionalDataType: "String"
+      - name: "culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Culture"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CategoryModel"
+  /api/v2/products/all-rituals:
+    get:
+      tags:
+      - "Product"
+      summary: "Returns a list of ritual products."
+      operationId: "Product_GetRituals"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "model.cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelCartType"
+        x-optionalDataType: "String"
+      - name: "model.countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelCountryCode"
+        x-optionalDataType: "String"
+      - name: "model.culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelCulture"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FullProductViewModel"
+  /api/v2/products/sub-categories:
+    get:
+      tags:
+      - "Product"
+      summary: "Get a listing of all available sub categories"
+      operationId: "Product_GetSubCategories"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CartType"
+        x-optionalDataType: "String"
+      - name: "countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CountryCode"
+        x-optionalDataType: "String"
+      - name: "culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Culture"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SubMenuBlockModel"
+  /api/v2/products/search:
+    get:
+      tags:
+      - "Product"
+      summary: "Search products by keyword"
+      operationId: "Product_SearchProduct"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CountryCode"
+        x-optionalDataType: "String"
+      - name: "culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Culture"
+        x-optionalDataType: "String"
+      - name: "cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CartType"
+        x-optionalDataType: "String"
+      - name: "searchTerm"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "SearchTerm"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ProductSearchViewModel"
+  /api/v2/products/ritual:
+    get:
+      tags:
+      - "Product"
+      summary: "Returns a list of ritual products"
+      operationId: "Product_GetRitualProducts"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "suggestProductQuery.cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "SuggestProductQueryCartType"
+        x-optionalDataType: "String"
+      - name: "suggestProductQuery.countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "SuggestProductQueryCountryCode"
+        x-optionalDataType: "String"
+      - name: "suggestProductQuery.languagePK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "SuggestProductQueryLanguagePK"
+        x-optionalDataType: "Int32"
+      - name: "suggestProductQuery.productPK"
+        in: "query"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "SuggestProductQueryProductPK"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SuggestProductModel"
+  /api/v2/products/may-love:
+    get:
+      tags:
+      - "Product"
+      summary: "Returns a list of may love products"
+      operationId: "Product_GetMayLoveProducts"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "suggestProductQuery.cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "SuggestProductQueryCartType"
+        x-optionalDataType: "String"
+      - name: "suggestProductQuery.countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "SuggestProductQueryCountryCode"
+        x-optionalDataType: "String"
+      - name: "suggestProductQuery.languagePK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "SuggestProductQueryLanguagePK"
+        x-optionalDataType: "Int32"
+      - name: "suggestProductQuery.productPK"
+        in: "query"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "SuggestProductQueryProductPK"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/SuggestProductModel"
+  /api/v2/products/bestseller:
+    get:
+      tags:
+      - "Product"
+      summary: "Returns a list of best selling products."
+      operationId: "Product_GetBestsellers"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "model.cartKey"
+        in: "query"
+        required: false
+        type: "string"
+        format: "uuid"
+        x-exportParamName: "ModelCartKey"
+      - name: "model.productsToShow"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "All"
+        - "BestSellers"
+        - "Spotlights"
+        x-exportParamName: "ModelProductsToShow"
+        x-optionalDataType: "String"
+      - name: "model.limit"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "ModelLimit"
+        x-optionalDataType: "Int32"
+      - name: "model.cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelCartType"
+        x-optionalDataType: "String"
+      - name: "model.countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelCountryCode"
+        x-optionalDataType: "String"
+      - name: "model.culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "ModelCulture"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FullProductViewModel"
+  /api/v2/products/best-sellers:
+    get:
+      tags:
+      - "Product"
+      summary: "Returns a list of top 5 best selling products."
+      operationId: "Product_GetBestSellers"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "cartKey"
+        in: "query"
+        required: false
+        type: "string"
+        format: "uuid"
+        x-exportParamName: "CartKey"
+      - name: "productsToShow"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "All"
+        - "BestSellers"
+        - "Spotlights"
+        x-exportParamName: "ProductsToShow"
+        x-optionalDataType: "String"
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "Limit"
+        x-optionalDataType: "Int32"
+      - name: "cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CartType"
+        x-optionalDataType: "String"
+      - name: "countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CountryCode"
+        x-optionalDataType: "String"
+      - name: "culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Culture"
+        x-optionalDataType: "String"
+      deprecated: true
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/BestSellersViewModel"
+  /api/v2/products/brand/best-sellers:
+    get:
+      tags:
+      - "Product"
+      summary: "Gets a list of products that have been selected to spotlight"
+      operationId: "Product_GetBrandSpotlight"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "cartKey"
+        in: "query"
+        required: false
+        type: "string"
+        format: "uuid"
+        x-exportParamName: "CartKey"
+      - name: "productsToShow"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "All"
+        - "BestSellers"
+        - "Spotlights"
+        x-exportParamName: "ProductsToShow"
+        x-optionalDataType: "String"
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "Limit"
+        x-optionalDataType: "Int32"
+      - name: "cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CartType"
+        x-optionalDataType: "String"
+      - name: "countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CountryCode"
+        x-optionalDataType: "String"
+      - name: "culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Culture"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/BrandViewModel"
+  /api/v2/products/detail:
+    get:
+      tags:
+      - "Product"
+      summary: "Get specific product information"
+      operationId: "Product_GetProductById"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "productPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "ProductPK"
+        x-optionalDataType: "Int32"
+      - name: "countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CountryCode"
+        x-optionalDataType: "String"
+      - name: "culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Culture"
+        x-optionalDataType: "String"
+      - name: "cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CartType"
+        x-optionalDataType: "String"
+      - name: "mainFK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainFK"
+        x-optionalDataType: "Int32"
+      - name: "repSiteUrl"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "RepSiteUrl"
+        x-optionalDataType: "String"
+      - name: "languageId"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "LanguageId"
+        x-optionalDataType: "Int32"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/FullProductViewModel"
+  /api/v2/products:
+    get:
+      tags:
+      - "Product"
+      summary: "Get full listing of all products"
+      operationId: "Product_GetProducts"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "cartType"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CartType"
+        x-optionalDataType: "String"
+      - name: "repSiteUrl"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "RepSiteUrl"
+        x-optionalDataType: "String"
+      - name: "mainOrderTypeFk"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainOrderTypeFk"
+        x-optionalDataType: "Int32"
+      - name: "mainTypeFk"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainTypeFk"
+        x-optionalDataType: "Int32"
+      - name: "countryCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CountryCode"
+        x-optionalDataType: "String"
+      - name: "eventId"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "EventId"
+        x-optionalDataType: "Int32"
+      - name: "categoryId"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CategoryId"
+        x-optionalDataType: "Int32"
+      - name: "otherCategoryId"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "OtherCategoryId"
+        x-optionalDataType: "Int32"
+      - name: "culture"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Culture"
+        x-optionalDataType: "String"
+      - name: "brandId"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "BrandId"
+        x-optionalDataType: "Int32"
+      - name: "menuId"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MenuId"
+        x-optionalDataType: "Int32"
+      - name: "functionId"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "FunctionId"
+        x-optionalDataType: "Int32"
+      - name: "lineId"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "LineId"
+        x-optionalDataType: "Int32"
+      - name: "take"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "Take"
+        x-optionalDataType: "Int32"
+      - name: "skip"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "Skip"
+        x-optionalDataType: "Int32"
+      - name: "searchTerm"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "SearchTerm"
+        x-optionalDataType: "String"
+      - name: "includePromos"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IncludePromos"
+        x-optionalDataType: "Bool"
+      - name: "isRedemption"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsRedemption"
+        x-optionalDataType: "Bool"
+      - name: "mainPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainPK"
+        x-optionalDataType: "Int32"
+      - name: "productPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "ProductPK"
+        x-optionalDataType: "Int32"
+      - name: "sku"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Sku"
+        x-optionalDataType: "String"
+      - name: "priceListPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "PriceListPK"
+        x-optionalDataType: "Int32"
+      - name: "isASEligible"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsASEligible"
+        x-optionalDataType: "Bool"
+      - name: "isPPASEligible"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsPPASEligible"
+        x-optionalDataType: "Bool"
+      - name: "isAdminEligible"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsAdminEligible"
+        x-optionalDataType: "Bool"
+      - name: "isSignupEligible"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsSignupEligible"
+        x-optionalDataType: "Bool"
+      - name: "isSignupPackage"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsSignupPackage"
+        x-optionalDataType: "Bool"
+      - name: "isStarterKit"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsStarterKit"
+        x-optionalDataType: "Bool"
+      - name: "isCreateAPack"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsCreateAPack"
+        x-optionalDataType: "Bool"
+      - name: "isImportEligible"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsImportEligible"
+        x-optionalDataType: "Bool"
+      - name: "isPayCard"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsPayCard"
+        x-optionalDataType: "Bool"
+      - name: "isCart"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsCart"
+        x-optionalDataType: "Bool"
+      - name: "currencyCode"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "CurrencyCode"
+        x-optionalDataType: "String"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FullProductViewModel"
+  /api/v2/shipping/shipping/options:
+    get:
+      tags:
+      - "Shipping"
+      summary: "Returns a list of shipping options available."
+      operationId: "Shipping_Get"
+      consumes: []
+      produces:
+      - "application/json"
+      - "text/json"
+      parameters:
+      - name: "cartKey"
+        in: "query"
+        required: false
+        type: "string"
+        format: "uuid"
+        x-exportParamName: "CartKey"
+      - name: "address1"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Address1"
+        x-optionalDataType: "String"
+      - name: "address2"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Address2"
+        x-optionalDataType: "String"
+      - name: "address3"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Address3"
+        x-optionalDataType: "String"
+      - name: "country"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Country"
+        x-optionalDataType: "String"
+      - name: "state"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "State"
+        x-optionalDataType: "String"
+      - name: "zip"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "Zip"
+        x-optionalDataType: "String"
+      - name: "city"
+        in: "query"
+        required: false
+        type: "string"
+        x-exportParamName: "City"
+        x-optionalDataType: "String"
+      - name: "mainPk"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainPk"
+        x-optionalDataType: "Int32"
+      - name: "isPOBox"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsPOBox"
+        x-optionalDataType: "Bool"
+      - name: "mainOrderPK"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "MainOrderPK"
+        x-optionalDataType: "Int32"
+      - name: "isSDProfile"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsSDProfile"
+        x-optionalDataType: "Bool"
+      - name: "isAdmin"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsAdmin"
+        x-optionalDataType: "Bool"
+      - name: "isEvent"
+        in: "query"
+        required: false
+        type: "boolean"
+        x-exportParamName: "IsEvent"
+        x-optionalDataType: "Bool"
+      deprecated: false
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "object"
+securityDefinitions:
+  apiKey:
+    description: "API Key Authentication"
+    type: "apiKey"
+    name: "authToken"
+    in: "header"
+definitions:
+  TaxModel:
+    type: "object"
+    properties:
+      rate:
+        type: "number"
+        format: "double"
+      displayRate:
+        type: "string"
+      rawRate:
+        type: "number"
+        format: "double"
+    example:
+      rate: 0.8008281904610115
+      rawRate: 6.027456183070403
+      displayRate: "displayRate"
+  CheckRetailUpgradeFormModel:
+    type: "object"
+    properties:
+      mainFK:
+        type: "integer"
+        format: "int32"
+  CheckRetailUpgrageViewModel:
+    type: "object"
+    properties:
+      canSignup:
+        type: "boolean"
+      signupUrl:
+        type: "string"
+    example:
+      signupUrl: "signupUrl"
+      canSignup: true
+  OrderDetailsQueryModel:
+    type: "object"
+    properties:
+      mainOrdersPK:
+        type: "integer"
+        format: "int32"
+      email:
+        type: "string"
+      culture:
+        type: "string"
+  SetShippingFormModel:
+    type: "object"
+    properties:
+      orderPk:
+        type: "integer"
+        format: "int32"
+      chartTypeFk:
+        type: "integer"
+        format: "int32"
+      signatureRequired:
+        type: "boolean"
+      cartKey:
+        type: "string"
+        format: "uuid"
+    example:
+      cartKey: "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+      orderPk: 0
+      signatureRequired: true
+      chartTypeFk: 6
+  UpdateOrderShipAddressFormModel:
+    type: "object"
+    required:
+    - "address1"
+    - "city"
+    - "country"
+    - "firstName"
+    - "lastName"
+    - "state"
+    properties:
+      mainOrdersFK:
+        type: "integer"
+        format: "int32"
+      firstName:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      lastName:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      address1:
+        type: "string"
+        minLength: 0
+        maxLength: 250
+      address2:
+        type: "string"
+        minLength: 0
+        maxLength: 250
+      address3:
+        type: "string"
+        minLength: 0
+        maxLength: 250
+      city:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      state:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      postalCode:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      country:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      area:
+        type: "string"
+      isResidential:
+        type: "boolean"
+      email:
+        type: "string"
+        minLength: 0
+        maxLength: 250
+      phone:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      fax:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      verifiedShippingAddress:
+        type: "boolean"
+    example:
+      area: "area"
+      lastName: "lastName"
+      country: "country"
+      address3: "address3"
+      address2: "address2"
+      city: "city"
+      address1: "address1"
+      postalCode: "postalCode"
+      firstName: "firstName"
+      phone: "phone"
+      isResidential: true
+      verifiedShippingAddress: true
+      state: "state"
+      fax: "fax"
+      mainOrdersFK: 0
+      email: "email"
+  NewOrderFormModel:
+    type: "object"
+    required:
+    - "countryCode"
+    - "mainId"
+    properties:
+      mainId:
+        type: "integer"
+        format: "int32"
+      mainOrderType:
+        type: "integer"
+        format: "int32"
+      countryCode:
+        type: "string"
+        minLength: 0
+        maxLength: 50
+      salesCampaignFK:
+        type: "integer"
+        format: "int32"
+      cartKey:
+        type: "string"
+        format: "uuid"
+    example:
+      salesCampaignFK: 1
+      cartKey: "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+      countryCode: "countryCode"
+      mainId: 0
+      mainOrderType: 6
+  CreateOrderViewModel:
+    type: "object"
+    properties:
+      mainOrdersFK:
+        type: "integer"
+        format: "int32"
+      encOrderNumber:
+        type: "string"
+      message:
+        type: "string"
+    example:
+      encOrderNumber: "encOrderNumber"
+      message: "message"
+      mainOrdersFK: 0
+  AddProductFormModelv2:
+    type: "object"
+    properties:
+      orderPK:
+        type: "integer"
+        format: "int32"
+      priceListFK:
+        type: "integer"
+        format: "int32"
+      countryCode:
+        type: "string"
+      products:
+        type: "array"
+        items:
+          $ref: "#/definitions/CartItemViewModel"
+      configurations:
+        type: "array"
+        items:
+          $ref: "#/definitions/ConfigurationModel"
+    example:
+      orderPK: 0
+      countryCode: "countryCode"
+      configurations:
+      - productPk: 9
+        configPk: 6
+        packagePk: 9
+      - productPk: 9
+        configPk: 6
+        packagePk: 9
+      priceListFK: 6
+      products:
+      - isSignup: true
+        packageFk: 2
+        joinMaxLifetimeLimitCatCode: "joinMaxLifetimeLimitCatCode"
+        priceListFk: 9
+        discount: 2.027123023002322
+        childItems:
+        - null
+        - null
+        configFk: 7
+        offerPreferredCust: true
+        formattedBasePrice: "formattedBasePrice"
+        points: 7.457744773683766
+        joinMaxLifetimeLimit: 5
+        formattedLineTotal: "formattedLineTotal"
+        showSDCheckbox: true
+        countryCode: "countryCode"
+        imageUrl: "imageUrl"
+        formattedLineSubTotal: "formattedLineSubTotal"
+        productFk: 5
+        offerAffiliateProgram: true
+        id: 1
+        sku: "sku"
+        currencyPK: 3
+        formattedRetailTaxablePrice: "formattedRetailTaxablePrice"
+        sp: 1.4894159098541704
+        isShippable: true
+        isPaCItem: true
+        basePrice: 4.145608029883936
+        unitPrice: 7.386281948385884
+        brandName: "brandName"
+        quantity: 5
+        lineTotal: 4.965218492984954
+        priceType: "priceType"
+        isStarterKit: true
+        currencySymbol: "currencySymbol"
+        isVolumeBasedRSB: true
+        retailTaxablePrice: 1.2315135367772556
+        lineSubTotal: 1.1730742509559433
+        offerLoyaltyProgram: true
+        setupForAs: true
+        formattedDiscount: "formattedDiscount"
+        cv: 1.0246457001441578
+        maxLimit: 6
+        name: "name"
+        formattedUnitPrice: "formattedUnitPrice"
+        currencyCode: "currencyCode"
+        extraFee: "extraFee"
+      - isSignup: true
+        packageFk: 2
+        joinMaxLifetimeLimitCatCode: "joinMaxLifetimeLimitCatCode"
+        priceListFk: 9
+        discount: 2.027123023002322
+        childItems:
+        - null
+        - null
+        configFk: 7
+        offerPreferredCust: true
+        formattedBasePrice: "formattedBasePrice"
+        points: 7.457744773683766
+        joinMaxLifetimeLimit: 5
+        formattedLineTotal: "formattedLineTotal"
+        showSDCheckbox: true
+        countryCode: "countryCode"
+        imageUrl: "imageUrl"
+        formattedLineSubTotal: "formattedLineSubTotal"
+        productFk: 5
+        offerAffiliateProgram: true
+        id: 1
+        sku: "sku"
+        currencyPK: 3
+        formattedRetailTaxablePrice: "formattedRetailTaxablePrice"
+        sp: 1.4894159098541704
+        isShippable: true
+        isPaCItem: true
+        basePrice: 4.145608029883936
+        unitPrice: 7.386281948385884
+        brandName: "brandName"
+        quantity: 5
+        lineTotal: 4.965218492984954
+        priceType: "priceType"
+        isStarterKit: true
+        currencySymbol: "currencySymbol"
+        isVolumeBasedRSB: true
+        retailTaxablePrice: 1.2315135367772556
+        lineSubTotal: 1.1730742509559433
+        offerLoyaltyProgram: true
+        setupForAs: true
+        formattedDiscount: "formattedDiscount"
+        cv: 1.0246457001441578
+        maxLimit: 6
+        name: "name"
+        formattedUnitPrice: "formattedUnitPrice"
+        currencyCode: "currencyCode"
+        extraFee: "extraFee"
+  CartItemViewModel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      quantity:
+        type: "integer"
+        format: "int32"
+      productFk:
+        type: "integer"
+        format: "int32"
+      packageFk:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      imageUrl:
+        type: "string"
+      setupForAs:
+        type: "boolean"
+      configFk:
+        type: "integer"
+        format: "int32"
+      priceListFk:
+        type: "integer"
+        format: "int32"
+      isPaCItem:
+        type: "boolean"
+      isSignup:
+        type: "boolean"
+      sku:
+        type: "string"
+      priceType:
+        type: "string"
+      countryCode:
+        type: "string"
+      currencyPK:
+        type: "integer"
+        format: "int32"
+      currencyCode:
+        type: "string"
+      currencySymbol:
+        type: "string"
+      extraFee:
+        type: "string"
+      discount:
+        type: "number"
+        format: "double"
+      formattedDiscount:
+        type: "string"
+      basePrice:
+        type: "number"
+        format: "double"
+      formattedBasePrice:
+        type: "string"
+      unitPrice:
+        type: "number"
+        format: "double"
+      formattedUnitPrice:
+        type: "string"
+      retailTaxablePrice:
+        type: "number"
+        format: "double"
+      formattedRetailTaxablePrice:
+        type: "string"
+      cv:
+        type: "number"
+        format: "double"
+      sp:
+        type: "number"
+        format: "double"
+      maxLimit:
+        type: "integer"
+        format: "int32"
+      points:
+        type: "number"
+        format: "double"
+      isShippable:
+        type: "boolean"
+      isStarterKit:
+        type: "boolean"
+      brandName:
+        type: "string"
+      lineSubTotal:
+        type: "number"
+        format: "double"
+      formattedLineSubTotal:
+        type: "string"
+      lineTotal:
+        type: "number"
+        format: "double"
+      formattedLineTotal:
+        type: "string"
+      offerAffiliateProgram:
+        type: "boolean"
+      isVolumeBasedRSB:
+        type: "boolean"
+      offerPreferredCust:
+        type: "boolean"
+      offerLoyaltyProgram:
+        type: "boolean"
+      showSDCheckbox:
+        type: "boolean"
+      joinMaxLifetimeLimitCatCode:
+        type: "string"
+      joinMaxLifetimeLimit:
+        type: "integer"
+        format: "int32"
+      childItems:
+        type: "array"
+        items:
+          $ref: "#/definitions/CartItemViewModel"
+    example:
+      isSignup: true
+      packageFk: 2
+      joinMaxLifetimeLimitCatCode: "joinMaxLifetimeLimitCatCode"
+      priceListFk: 9
+      discount: 2.027123023002322
+      childItems:
+      - null
+      - null
+      configFk: 7
+      offerPreferredCust: true
+      formattedBasePrice: "formattedBasePrice"
+      points: 7.457744773683766
+      joinMaxLifetimeLimit: 5
+      formattedLineTotal: "formattedLineTotal"
+      showSDCheckbox: true
+      countryCode: "countryCode"
+      imageUrl: "imageUrl"
+      formattedLineSubTotal: "formattedLineSubTotal"
+      productFk: 5
+      offerAffiliateProgram: true
+      id: 1
+      sku: "sku"
+      currencyPK: 3
+      formattedRetailTaxablePrice: "formattedRetailTaxablePrice"
+      sp: 1.4894159098541704
+      isShippable: true
+      isPaCItem: true
+      basePrice: 4.145608029883936
+      unitPrice: 7.386281948385884
+      brandName: "brandName"
+      quantity: 5
+      lineTotal: 4.965218492984954
+      priceType: "priceType"
+      isStarterKit: true
+      currencySymbol: "currencySymbol"
+      isVolumeBasedRSB: true
+      retailTaxablePrice: 1.2315135367772556
+      lineSubTotal: 1.1730742509559433
+      offerLoyaltyProgram: true
+      setupForAs: true
+      formattedDiscount: "formattedDiscount"
+      cv: 1.0246457001441578
+      maxLimit: 6
+      name: "name"
+      formattedUnitPrice: "formattedUnitPrice"
+      currencyCode: "currencyCode"
+      extraFee: "extraFee"
+  ConfigurationModel:
+    type: "object"
+    properties:
+      packagePk:
+        type: "integer"
+        format: "int32"
+      productPk:
+        type: "integer"
+        format: "int32"
+      configPk:
+        type: "integer"
+        format: "int32"
+    example:
+      productPk: 9
+      configPk: 6
+      packagePk: 9
+  AddCCPaymentAndBillingFormModel:
+    type: "object"
+    required:
+    - "cardFullName"
+    - "cvv"
+    - "expireMonth"
+    - "expireYear"
+    properties:
+      mainOrdersFK:
+        type: "integer"
+        format: "int32"
+      mainFK:
+        type: "integer"
+        format: "int32"
+      cardFullName:
+        type: "string"
+      cardNumber:
+        type: "string"
+      cardType:
+        type: "string"
+      cvv:
+        type: "string"
+      expireMonth:
+        type: "string"
+      expireYear:
+        type: "string"
+      saveCardInfo:
+        type: "boolean"
+      installment:
+        type: "integer"
+        format: "int32"
+      fname:
+        type: "string"
+      lname:
+        type: "string"
+      city:
+        type: "string"
+      state:
+        type: "string"
+      zip:
+        type: "string"
+      phone:
+        type: "string"
+      country:
+        type: "string"
+      address1:
+        type: "string"
+      address2:
+        type: "string"
+      address3:
+        type: "string"
+      email:
+        type: "string"
+      useBillingAddress:
+        type: "boolean"
+      cardToken:
+        type: "string"
+  ApplyIterativeDiscountFormModel:
+    type: "object"
+    properties:
+      mainOrdersFK:
+        type: "integer"
+        format: "int32"
+    example:
+      mainOrdersFK: 0
+  ProductBrand:
+    type: "object"
+    properties:
+      productBrandPK:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      function:
+        type: "string"
+      seqNo:
+        type: "number"
+        format: "float"
+    example:
+      seqNo: 6.0274563
+      function: "function"
+      productBrandPK: 0
+      name: "name"
+  CategoryModel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      imageUrl:
+        type: "string"
+      imageKey:
+        type: "string"
+      bannerImageUrl:
+        type: "string"
+      bannerImageKey:
+        type: "string"
+      seqNo:
+        type: "number"
+        format: "float"
+      translationKey:
+        type: "string"
+      hasSubMenu:
+        type: "boolean"
+      isBranded:
+        type: "boolean"
+      showInTopMenu:
+        type: "boolean"
+      menus:
+        type: "array"
+        readOnly: true
+        items:
+          $ref: "#/definitions/SubMenuBlockModel"
+    example:
+      seqNo: 6.0274563
+      translationKey: "translationKey"
+      hasSubMenu: true
+      imageKey: "imageKey"
+      bannerImageKey: "bannerImageKey"
+      description: "description"
+      showInTopMenu: true
+      imageUrl: "imageUrl"
+      bannerImageUrl: "bannerImageUrl"
+      name: "name"
+      isBranded: true
+      id: 0
+      menus:
+      - subMenuType: "SubCategory"
+        subTitle: "subTitle"
+        translationKey: "translationKey"
+        seqNo: 5.962134
+        isShopAll: true
+        description: "description"
+        childMenus:
+        - bannerImage: "bannerImage"
+          subTitle: "subTitle"
+          translationKey: "translationKey"
+          seqNo: 2.302136
+          menuKey: "menuKey"
+          imageUrl: "imageUrl"
+          imageKey: "imageKey"
+          bannerImageKey: "bannerImageKey"
+          description: "description"
+          action: "action"
+          id: 5
+        - bannerImage: "bannerImage"
+          subTitle: "subTitle"
+          translationKey: "translationKey"
+          seqNo: 2.302136
+          menuKey: "menuKey"
+          imageUrl: "imageUrl"
+          imageKey: "imageKey"
+          bannerImageKey: "bannerImageKey"
+          description: "description"
+          action: "action"
+          id: 5
+        id: 1
+      - subMenuType: "SubCategory"
+        subTitle: "subTitle"
+        translationKey: "translationKey"
+        seqNo: 5.962134
+        isShopAll: true
+        description: "description"
+        childMenus:
+        - bannerImage: "bannerImage"
+          subTitle: "subTitle"
+          translationKey: "translationKey"
+          seqNo: 2.302136
+          menuKey: "menuKey"
+          imageUrl: "imageUrl"
+          imageKey: "imageKey"
+          bannerImageKey: "bannerImageKey"
+          description: "description"
+          action: "action"
+          id: 5
+        - bannerImage: "bannerImage"
+          subTitle: "subTitle"
+          translationKey: "translationKey"
+          seqNo: 2.302136
+          menuKey: "menuKey"
+          imageUrl: "imageUrl"
+          imageKey: "imageKey"
+          bannerImageKey: "bannerImageKey"
+          description: "description"
+          action: "action"
+          id: 5
+        id: 1
+  SubMenuBlockModel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      subMenuType:
+        type: "string"
+        enum:
+        - "SubCategory"
+        - "Concern"
+        - "Line"
+        - "Category"
+      subTitle:
+        type: "string"
+      description:
+        type: "string"
+      translationKey:
+        type: "string"
+      isShopAll:
+        type: "boolean"
+      seqNo:
+        type: "number"
+        format: "float"
+      childMenus:
+        type: "array"
+        items:
+          $ref: "#/definitions/SubMenuModel"
+    example:
+      subMenuType: "SubCategory"
+      subTitle: "subTitle"
+      translationKey: "translationKey"
+      seqNo: 5.962134
+      isShopAll: true
+      description: "description"
+      childMenus:
+      - bannerImage: "bannerImage"
+        subTitle: "subTitle"
+        translationKey: "translationKey"
+        seqNo: 2.302136
+        menuKey: "menuKey"
+        imageUrl: "imageUrl"
+        imageKey: "imageKey"
+        bannerImageKey: "bannerImageKey"
+        description: "description"
+        action: "action"
+        id: 5
+      - bannerImage: "bannerImage"
+        subTitle: "subTitle"
+        translationKey: "translationKey"
+        seqNo: 2.302136
+        menuKey: "menuKey"
+        imageUrl: "imageUrl"
+        imageKey: "imageKey"
+        bannerImageKey: "bannerImageKey"
+        description: "description"
+        action: "action"
+        id: 5
+      id: 1
+  SubMenuModel:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      subTitle:
+        type: "string"
+      menuKey:
+        type: "string"
+      description:
+        type: "string"
+      imageUrl:
+        type: "string"
+      imageKey:
+        type: "string"
+      bannerImage:
+        type: "string"
+      bannerImageKey:
+        type: "string"
+      translationKey:
+        type: "string"
+      seqNo:
+        type: "number"
+        format: "float"
+      action:
+        type: "string"
+    example:
+      bannerImage: "bannerImage"
+      subTitle: "subTitle"
+      translationKey: "translationKey"
+      seqNo: 2.302136
+      menuKey: "menuKey"
+      imageUrl: "imageUrl"
+      imageKey: "imageKey"
+      bannerImageKey: "bannerImageKey"
+      description: "description"
+      action: "action"
+      id: 5
+  CAPHeaderModel:
+    type: "object"
+    properties:
+      productName:
+        type: "string"
+      minCV:
+        type: "integer"
+        format: "int32"
+      maxCV:
+        type: "integer"
+        format: "int32"
+    example:
+      minCV: 0
+      maxCV: 6
+      productName: "productName"
+  FullProductViewModel:
+    type: "object"
+    properties:
+      productPK:
+        type: "integer"
+        format: "int32"
+      productCode:
+        type: "string"
+      sku:
+        type: "string"
+      productCategory:
+        type: "string"
+      brandId:
+        type: "integer"
+        format: "int32"
+      brandName:
+        type: "string"
+      productBrand:
+        type: "string"
+      name:
+        type: "string"
+      imageUrl:
+        type: "string"
+      weight:
+        type: "number"
+        format: "double"
+      isComingSoon:
+        type: "boolean"
+      comingSoonMessage:
+        type: "string"
+      isPackage:
+        type: "boolean"
+      packageItems:
+        type: "array"
+        items:
+          $ref: "#/definitions/PackComponentModel"
+      isConfigurable:
+        type: "boolean"
+      isProductAvailableOnAutoship:
+        type: "boolean"
+      isProductOnAutoship:
+        type: "boolean"
+      autoshipProductPk:
+        type: "integer"
+        format: "int32"
+      maxLimit:
+        type: "integer"
+        format: "int32"
+      points:
+        type: "number"
+        format: "double"
+      bv:
+        type: "number"
+        format: "double"
+      sp:
+        type: "number"
+        format: "double"
+      productMenuId:
+        type: "integer"
+        format: "int32"
+      productMenu:
+        type: "string"
+      configurations:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProductConfigurationViewModel"
+      pricing:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProductPricingViewModel"
+      description:
+        type: "string"
+      imageUrls:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProductImageModel"
+      additionalInfo:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProductAdditionalInfoViewModel"
+      documents:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProductDocumentViewModel"
+      isShippable:
+        type: "boolean"
+      isStarterKit:
+        type: "boolean"
+      seqNo:
+        type: "integer"
+        format: "int32"
+      isFoodProduct:
+        type: "boolean"
+      rankInfo:
+        $ref: "#/definitions/GetRankResponseModel"
+      isRetailPackage:
+        type: "boolean"
+      isVolumeBasedRSB:
+        type: "boolean"
+      mainType:
+        type: "integer"
+        format: "int32"
+      activeSmartDelivery:
+        type: "boolean"
+      isRedemption:
+        type: "boolean"
+      priceType:
+        type: "string"
+      doNotSplitPackBV:
+        type: "boolean"
+      sdOnlyPackage:
+        type: "boolean"
+      showSDCheckbox:
+        type: "boolean"
+      offerAffiliateProgram:
+        type: "boolean"
+      offerPreferredCust:
+        type: "boolean"
+      offerLoyaltyProgram:
+        type: "boolean"
+      offerSDOnShop:
+        type: "boolean"
+      isRetailCart:
+        type: "boolean"
+      productLineId:
+        type: "integer"
+        format: "int32"
+      productLine:
+        type: "string"
+      productFunction:
+        type: "string"
+      maxLifetimeLimitCatCode:
+        type: "string"
+      maxLifetimeLimit:
+        type: "integer"
+        format: "int32"
+      joinMaxLifetimeLimitCatCode:
+        type: "string"
+      joinMaxLifetimeLimit:
+        type: "integer"
+        format: "int32"
+      productCmsData:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProductCmsDataModel"
+    example:
+      isProductOnAutoship: true
+      seqNo: 5
+      documents:
+      - name: "name"
+        url: "url"
+      - name: "name"
+        url: "url"
+      joinMaxLifetimeLimitCatCode: "joinMaxLifetimeLimitCatCode"
+      configurations:
+      - image: "image"
+        packageFK: 7
+        comingSoonMessage: "comingSoonMessage"
+        productPK: 1
+        seqNo: 7.4577446
+        description: "description"
+        productName: "productName"
+        unit: 1
+        isComingSoon: true
+        productCode: "productCode"
+        price: 6.84685269835264
+        attribute1: "attribute1"
+        attribute3: "attribute3"
+        attribute2: "attribute2"
+        configurableProductPK: 1
+      - image: "image"
+        packageFK: 7
+        comingSoonMessage: "comingSoonMessage"
+        productPK: 1
+        seqNo: 7.4577446
+        description: "description"
+        productName: "productName"
+        unit: 1
+        isComingSoon: true
+        productCode: "productCode"
+        price: 6.84685269835264
+        attribute1: "attribute1"
+        attribute3: "attribute3"
+        attribute2: "attribute2"
+        configurableProductPK: 1
+      productBrand: "productBrand"
+      points: 9.301444243932576
+      productLine: "productLine"
+      joinMaxLifetimeLimit: 6
+      additionalInfo:
+      - name: "name"
+        content: "content"
+      - name: "name"
+        content: "content"
+      sku: "sku"
+      productCmsData:
+      - dataTag: "dataTag"
+        name: "name"
+        value: "value"
+      - dataTag: "dataTag"
+        name: "name"
+        value: "value"
+      activeSmartDelivery: true
+      brandName: "brandName"
+      doNotSplitPackBV: true
+      sdOnlyPackage: true
+      weight: 1.4658129805029452
+      isVolumeBasedRSB: true
+      isRetailCart: true
+      offerLoyaltyProgram: true
+      isComingSoon: true
+      brandId: 6
+      productMenuId: 4
+      name: "name"
+      isRedemption: true
+      maxLifetimeLimit: 9
+      rankInfo:
+        image: "image"
+        isDirectorRank: true
+        color: "color"
+        rankId: 9
+        name: "name"
+        description: "description"
+        monthlyBVRequirement: 9
+      description: "description"
+      autoshipProductPk: 2
+      offerPreferredCust: true
+      productCategory: "productCategory"
+      bv: 3.616076749251911
+      showSDCheckbox: true
+      offerSDOnShop: true
+      imageUrl: "imageUrl"
+      offerAffiliateProgram: true
+      sp: 2.027123023002322
+      isShippable: true
+      productLineId: 8
+      comingSoonMessage: "comingSoonMessage"
+      productPK: 0
+      isConfigurable: true
+      isStarterKit: true
+      isRetailPackage: true
+      priceType: "priceType"
+      productFunction: "productFunction"
+      isPackage: true
+      mainType: 6
+      maxLifetimeLimitCatCode: "maxLifetimeLimitCatCode"
+      productCode: "productCode"
+      packageItems:
+      - imgUrl: "imgUrl"
+        productPK: 5
+        qty: 5
+        name: "name"
+        description: "description"
+      - imgUrl: "imgUrl"
+        productPK: 5
+        qty: 5
+        name: "name"
+        description: "description"
+      isFoodProduct: true
+      maxLimit: 7
+      imageUrls:
+      - imageName: "imageName"
+        imageUrl: "imageUrl"
+      - imageName: "imageName"
+        imageUrl: "imageUrl"
+      isProductAvailableOnAutoship: true
+      productMenu: "productMenu"
+      pricing:
+      - formattedPrice: "formattedPrice"
+        price: 1.1730742509559433
+        priceType: "priceType"
+        priceWarning: "priceWarning"
+        currencySymbol: "currencySymbol"
+        noVatPrice: 4.965218492984954
+      - formattedPrice: "formattedPrice"
+        price: 1.1730742509559433
+        priceType: "priceType"
+        priceWarning: "priceWarning"
+        currencySymbol: "currencySymbol"
+        noVatPrice: 4.965218492984954
+  PackComponentModel:
+    type: "object"
+    properties:
+      productPK:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      imgUrl:
+        type: "string"
+      qty:
+        type: "integer"
+        format: "int32"
+    example:
+      imgUrl: "imgUrl"
+      productPK: 5
+      qty: 5
+      name: "name"
+      description: "description"
+  ProductConfigurationViewModel:
+    type: "object"
+    properties:
+      packageFK:
+        type: "integer"
+        format: "int32"
+      configurableProductPK:
+        type: "integer"
+        format: "int32"
+      productPK:
+        type: "integer"
+        format: "int32"
+      productCode:
+        type: "string"
+      productName:
+        type: "string"
+      image:
+        type: "string"
+      attribute1:
+        type: "string"
+      attribute2:
+        type: "string"
+      attribute3:
+        type: "string"
+      description:
+        type: "string"
+      unit:
+        type: "integer"
+        format: "int32"
+      price:
+        type: "number"
+        format: "double"
+      seqNo:
+        type: "number"
+        format: "float"
+      isComingSoon:
+        type: "boolean"
+      comingSoonMessage:
+        type: "string"
+    example:
+      image: "image"
+      packageFK: 7
+      comingSoonMessage: "comingSoonMessage"
+      productPK: 1
+      seqNo: 7.4577446
+      description: "description"
+      productName: "productName"
+      unit: 1
+      isComingSoon: true
+      productCode: "productCode"
+      price: 6.84685269835264
+      attribute1: "attribute1"
+      attribute3: "attribute3"
+      attribute2: "attribute2"
+      configurableProductPK: 1
+  ProductPricingViewModel:
+    type: "object"
+    properties:
+      priceType:
+        type: "string"
+      currencySymbol:
+        type: "string"
+      price:
+        type: "number"
+        format: "double"
+      noVatPrice:
+        type: "number"
+        format: "double"
+      formattedPrice:
+        type: "string"
+      priceWarning:
+        type: "string"
+    example:
+      formattedPrice: "formattedPrice"
+      price: 1.1730742509559433
+      priceType: "priceType"
+      priceWarning: "priceWarning"
+      currencySymbol: "currencySymbol"
+      noVatPrice: 4.965218492984954
+  ProductImageModel:
+    type: "object"
+    properties:
+      imageUrl:
+        type: "string"
+      imageName:
+        type: "string"
+    example:
+      imageName: "imageName"
+      imageUrl: "imageUrl"
+  ProductAdditionalInfoViewModel:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      content:
+        type: "string"
+    example:
+      name: "name"
+      content: "content"
+  ProductDocumentViewModel:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      url:
+        type: "string"
+    example:
+      name: "name"
+      url: "url"
+  GetRankResponseModel:
+    type: "object"
+    properties:
+      rankId:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      image:
+        type: "string"
+      color:
+        type: "string"
+      monthlyBVRequirement:
+        type: "integer"
+        format: "int32"
+      isDirectorRank:
+        type: "boolean"
+    example:
+      image: "image"
+      isDirectorRank: true
+      color: "color"
+      rankId: 9
+      name: "name"
+      description: "description"
+      monthlyBVRequirement: 9
+  ProductCmsDataModel:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "string"
+      dataTag:
+        type: "string"
+    example:
+      dataTag: "dataTag"
+      name: "name"
+      value: "value"
+  RemainingProductsRequest:
+    type: "object"
+    properties:
+      productIds:
+        type: "string"
+      mainPK:
+        type: "integer"
+        format: "int32"
+  RemainingProductQuantitiesModel:
+    type: "object"
+    properties:
+      maxLifetimeLimitCatCode:
+        type: "string"
+      productPk:
+        type: "integer"
+        format: "int32"
+      remainingQTY:
+        type: "integer"
+        format: "int32"
+    example:
+      productPk: 0
+      remainingQTY: 6
+      maxLifetimeLimitCatCode: "maxLifetimeLimitCatCode"
+  CategoryQueryModel:
+    type: "object"
+    properties:
+      cartType:
+        type: "string"
+      countryCode:
+        type: "string"
+      culture:
+        type: "string"
+  BrandViewModel:
+    type: "object"
+    properties:
+      itemPK:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      translationState:
+        type: "string"
+      translationName:
+        type: "string"
+      summary:
+        type: "string"
+      description:
+        type: "string"
+      imageUrl:
+        type: "string"
+      spotlightSmallImage:
+        type: "string"
+      spotlightSmallImageKey:
+        type: "string"
+      spotlightLargeImage:
+        type: "string"
+      spotlightLargeImageKey:
+        type: "string"
+      bannerImage:
+        type: "string"
+      bannerImageKey:
+        type: "string"
+    example:
+      summary: "summary"
+      bannerImageKey: "bannerImageKey"
+      description: "description"
+      spotlightLargeImage: "spotlightLargeImage"
+      translationState: "translationState"
+      spotlightSmallImageKey: "spotlightSmallImageKey"
+      itemPK: 0
+      bannerImage: "bannerImage"
+      spotlightLargeImageKey: "spotlightLargeImageKey"
+      imageUrl: "imageUrl"
+      name: "name"
+      translationName: "translationName"
+      spotlightSmallImage: "spotlightSmallImage"
+  BaseQueryModel:
+    type: "object"
+    properties:
+      cartType:
+        type: "string"
+      countryCode:
+        type: "string"
+      culture:
+        type: "string"
+  ProductSearchQueryModel:
+    type: "object"
+    properties:
+      countryCode:
+        type: "string"
+      culture:
+        type: "string"
+      cartType:
+        type: "string"
+      searchTerm:
+        type: "string"
+  ProductSearchViewModel:
+    type: "object"
+    properties:
+      productFK:
+        type: "integer"
+        format: "int32"
+      productName:
+        type: "string"
+      imageUrl:
+        type: "string"
+    example:
+      imageUrl: "imageUrl"
+      productFK: 0
+      productName: "productName"
+  SuggestProductQueryModel:
+    type: "object"
+    required:
+    - "productPK"
+    properties:
+      cartType:
+        type: "string"
+      countryCode:
+        type: "string"
+      languagePK:
+        type: "integer"
+        format: "int32"
+      productPK:
+        type: "integer"
+        format: "int32"
+  SuggestProductModel:
+    type: "object"
+    properties:
+      productPK:
+        type: "integer"
+        format: "int32"
+      classificationFK:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      imageUrl:
+        type: "string"
+    example:
+      productPK: 0
+      classificationFK: 6
+      imageUrl: "imageUrl"
+      name: "name"
+      description: "description"
+  BestSellersQueryModel:
+    type: "object"
+    properties:
+      cartKey:
+        type: "string"
+        format: "uuid"
+      productsToShow:
+        type: "string"
+        enum:
+        - "All"
+        - "BestSellers"
+        - "Spotlights"
+      limit:
+        type: "integer"
+        format: "int32"
+      cartType:
+        type: "string"
+      countryCode:
+        type: "string"
+      culture:
+        type: "string"
+  BestSellersViewModel:
+    type: "object"
+    properties:
+      productPK:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      imageUrl:
+        type: "string"
+      description:
+        type: "string"
+      price:
+        type: "string"
+      altPrice:
+        type: "string"
+      productMenu:
+        type: "string"
+      spotlightSmallImageKey:
+        type: "string"
+      spotlightLargeImageKey:
+        type: "string"
+      product:
+        $ref: "#/definitions/FullProductViewModel"
+    example:
+      spotlightSmallImageKey: "spotlightSmallImageKey"
+      altPrice: "altPrice"
+      product:
+        isProductOnAutoship: true
+        seqNo: 5
+        documents:
+        - name: "name"
+          url: "url"
+        - name: "name"
+          url: "url"
+        joinMaxLifetimeLimitCatCode: "joinMaxLifetimeLimitCatCode"
+        configurations:
+        - image: "image"
+          packageFK: 7
+          comingSoonMessage: "comingSoonMessage"
+          productPK: 1
+          seqNo: 7.4577446
+          description: "description"
+          productName: "productName"
+          unit: 1
+          isComingSoon: true
+          productCode: "productCode"
+          price: 6.84685269835264
+          attribute1: "attribute1"
+          attribute3: "attribute3"
+          attribute2: "attribute2"
+          configurableProductPK: 1
+        - image: "image"
+          packageFK: 7
+          comingSoonMessage: "comingSoonMessage"
+          productPK: 1
+          seqNo: 7.4577446
+          description: "description"
+          productName: "productName"
+          unit: 1
+          isComingSoon: true
+          productCode: "productCode"
+          price: 6.84685269835264
+          attribute1: "attribute1"
+          attribute3: "attribute3"
+          attribute2: "attribute2"
+          configurableProductPK: 1
+        productBrand: "productBrand"
+        points: 9.301444243932576
+        productLine: "productLine"
+        joinMaxLifetimeLimit: 6
+        additionalInfo:
+        - name: "name"
+          content: "content"
+        - name: "name"
+          content: "content"
+        sku: "sku"
+        productCmsData:
+        - dataTag: "dataTag"
+          name: "name"
+          value: "value"
+        - dataTag: "dataTag"
+          name: "name"
+          value: "value"
+        activeSmartDelivery: true
+        brandName: "brandName"
+        doNotSplitPackBV: true
+        sdOnlyPackage: true
+        weight: 1.4658129805029452
+        isVolumeBasedRSB: true
+        isRetailCart: true
+        offerLoyaltyProgram: true
+        isComingSoon: true
+        brandId: 6
+        productMenuId: 4
+        name: "name"
+        isRedemption: true
+        maxLifetimeLimit: 9
+        rankInfo:
+          image: "image"
+          isDirectorRank: true
+          color: "color"
+          rankId: 9
+          name: "name"
+          description: "description"
+          monthlyBVRequirement: 9
+        description: "description"
+        autoshipProductPk: 2
+        offerPreferredCust: true
+        productCategory: "productCategory"
+        bv: 3.616076749251911
+        showSDCheckbox: true
+        offerSDOnShop: true
+        imageUrl: "imageUrl"
+        offerAffiliateProgram: true
+        sp: 2.027123023002322
+        isShippable: true
+        productLineId: 8
+        comingSoonMessage: "comingSoonMessage"
+        productPK: 0
+        isConfigurable: true
+        isStarterKit: true
+        isRetailPackage: true
+        priceType: "priceType"
+        productFunction: "productFunction"
+        isPackage: true
+        mainType: 6
+        maxLifetimeLimitCatCode: "maxLifetimeLimitCatCode"
+        productCode: "productCode"
+        packageItems:
+        - imgUrl: "imgUrl"
+          productPK: 5
+          qty: 5
+          name: "name"
+          description: "description"
+        - imgUrl: "imgUrl"
+          productPK: 5
+          qty: 5
+          name: "name"
+          description: "description"
+        isFoodProduct: true
+        maxLimit: 7
+        imageUrls:
+        - imageName: "imageName"
+          imageUrl: "imageUrl"
+        - imageName: "imageName"
+          imageUrl: "imageUrl"
+        isProductAvailableOnAutoship: true
+        productMenu: "productMenu"
+        pricing:
+        - formattedPrice: "formattedPrice"
+          price: 1.1730742509559433
+          priceType: "priceType"
+          priceWarning: "priceWarning"
+          currencySymbol: "currencySymbol"
+          noVatPrice: 4.965218492984954
+        - formattedPrice: "formattedPrice"
+          price: 1.1730742509559433
+          priceType: "priceType"
+          priceWarning: "priceWarning"
+          currencySymbol: "currencySymbol"
+          noVatPrice: 4.965218492984954
+      productPK: 0
+      spotlightLargeImageKey: "spotlightLargeImageKey"
+      price: "price"
+      imageUrl: "imageUrl"
+      name: "name"
+      description: "description"
+      productMenu: "productMenu"
+  ProductDetailQueryModel:
+    type: "object"
+    properties:
+      productPK:
+        type: "integer"
+        format: "int32"
+      countryCode:
+        type: "string"
+      culture:
+        type: "string"
+      cartType:
+        type: "string"
+      mainFK:
+        type: "integer"
+        format: "int32"
+      repSiteUrl:
+        type: "string"
+      languageId:
+        type: "integer"
+        format: "int32"
+  ProductQueryModel:
+    type: "object"
+    properties:
+      cartType:
+        type: "string"
+      repSiteUrl:
+        type: "string"
+      mainOrderTypeFk:
+        type: "integer"
+        format: "int32"
+      mainTypeFk:
+        type: "integer"
+        format: "int32"
+      countryCode:
+        type: "string"
+      eventId:
+        type: "integer"
+        format: "int32"
+      categoryId:
+        type: "integer"
+        format: "int32"
+      otherCategoryId:
+        type: "integer"
+        format: "int32"
+      culture:
+        type: "string"
+      brandId:
+        type: "integer"
+        format: "int32"
+      menuId:
+        type: "integer"
+        format: "int32"
+      functionId:
+        type: "integer"
+        format: "int32"
+      lineId:
+        type: "integer"
+        format: "int32"
+      take:
+        type: "integer"
+        format: "int32"
+      skip:
+        type: "integer"
+        format: "int32"
+      searchTerm:
+        type: "string"
+      includePromos:
+        type: "boolean"
+      isRedemption:
+        type: "boolean"
+      mainPK:
+        type: "integer"
+        format: "int32"
+      productPK:
+        type: "integer"
+        format: "int32"
+      sku:
+        type: "string"
+      priceListPK:
+        type: "integer"
+        format: "int32"
+      isASEligible:
+        type: "boolean"
+      isPPASEligible:
+        type: "boolean"
+      isAdminEligible:
+        type: "boolean"
+      isSignupEligible:
+        type: "boolean"
+      isSignupPackage:
+        type: "boolean"
+      isStarterKit:
+        type: "boolean"
+      isCreateAPack:
+        type: "boolean"
+      isImportEligible:
+        type: "boolean"
+      isPayCard:
+        type: "boolean"
+      isCart:
+        type: "boolean"
+      currencyCode:
+        type: "string"
+  ShippingQueryModel:
+    type: "object"
+    properties:
+      cartKey:
+        type: "string"
+        format: "uuid"
+      address1:
+        type: "string"
+      address2:
+        type: "string"
+      address3:
+        type: "string"
+      country:
+        type: "string"
+      state:
+        type: "string"
+      zip:
+        type: "string"
+      city:
+        type: "string"
+      mainPk:
+        type: "integer"
+        format: "int32"
+      isPOBox:
+        type: "boolean"
+      mainOrderPK:
+        type: "integer"
+        format: "int32"
+      isSDProfile:
+        type: "boolean"
+      isAdmin:
+        type: "boolean"
+      isEvent:
+        type: "boolean"
