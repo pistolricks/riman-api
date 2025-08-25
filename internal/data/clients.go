@@ -244,21 +244,19 @@ func (m ClientModel) Update(client *Client) error {
 	return nil
 }
 
-func (m ClientModel) UpdateToken(client *Client, token string) error {
+func (m ClientModel) UpdateToken(id int64, token string) error {
 	query := `
         UPDATE clients
                SET token = $1
 	WHERE id = $2
      RETURNING token`
 
-	args := []any{
-		client.Token,
-	}
+	args := []any{token, id}
 
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
-	err := m.DB.QueryRowContext(ctx, query, args...).Scan(&client.Token)
+	err := m.DB.QueryRowContext(ctx, query, args...).Scan(&token)
 	if err != nil {
 		switch {
 		case err.Error() == `pq: duplicate key value violates unique constraint "a lot of different ones"`:
@@ -377,4 +375,28 @@ func (m ClientModel) Delete(id int64) error {
 	}
 
 	return nil
+}
+
+func (m PermissionModel) AddForClient(userID int64, clientID int64) error {
+	query := `
+        INSERT INTO clients_users (client_id, user_id)
+    	VALUES ($1, $2)
+		RETURNING client_id, user_id
+	`
+
+	args := []any{clientID, userID}
+
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	err := m.DB.QueryRowContext(ctx, query, args...).Scan(&clientID, &userID)
+	if err != nil {
+		switch {
+		case err.Error() == `pq: duplicate key value violates unique constraint "clients_email_key"`:
+			return ErrDuplicateEmail
+		default:
+			return err
+		}
+	}
+	return err
 }

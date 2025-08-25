@@ -64,7 +64,7 @@ func (app *application) secureVendorLoginHandler(w http.ResponseWriter, r *http.
 		return
 	}
 
-	err = app.models.Clients.UpdateToken(client, token)
+	err = app.models.Clients.UpdateToken(client.ID, token)
 	if err != nil {
 		return
 	}
@@ -76,12 +76,33 @@ func (app *application) secureVendorLoginHandler(w http.ResponseWriter, r *http.
 
 func (app *application) secureTokenRefreshHandler(w http.ResponseWriter, r *http.Request) {
 
+	var input struct {
+		Username string `json:"username"`
+	}
+
+	err := app.readJSON(w, r, &input)
+	if err != nil {
+		app.badRequestResponse(w, r, err)
+		return
+	}
+
+	client, err := app.models.Clients.GetByUsername(input.Username)
+	if err != nil {
+		switch {
+		case errors.Is(err, data.ErrRecordNotFound):
+			app.invalidCredentialsResponse(w, r)
+		default:
+			app.serverErrorResponse(w, r, err)
+		}
+		return
+	}
+
 	token, h, err := app.security.AuthenticationApi.AuthenticationReIssue(context.Background())
 	if err != nil {
 		return
 	}
 
-	err = app.models.Clients.UpdateToken(client, token)
+	err = app.models.Clients.UpdateToken(client.ID, token)
 	if err != nil {
 		return
 	}
