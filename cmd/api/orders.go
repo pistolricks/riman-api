@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/pistolricks/riman-api/internal/data"
 	"github.com/pistolricks/riman-api/internal/validator"
@@ -11,10 +12,72 @@ import (
 
 func (app *application) createOrderHandler(w http.ResponseWriter, r *http.Request) {
 	var input struct {
-		Title   string       `json:"title"`
-		Year    int32        `json:"year"`
-		Runtime data.Runtime `json:"runtime"`
-		Genres  []string     `json:"genres"`
+		ID                      int64       `json:"id"`
+		CreatedAt               time.Time   `json:"created_at"`
+		OrderDate               string      `json:"orderDate"`
+		MainOrdersPK            int         `json:"mainOrdersPK"`
+		OrderType               string      `json:"orderType"`
+		FinalOrderType          interface{} `json:"finalOrderType"`
+		SiteURL                 string      `json:"siteURL"`
+		EncOrderNumber          string      `json:"encOrderNumber"`
+		CurrencySymbol          string      `json:"currencySymbol"`
+		CurrencyCode            string      `json:"currencyCode"`
+		PaidStatus              bool        `json:"paidStatus"`
+		HasTaxInvoice           bool        `json:"hasTaxInvoice"`
+		HasCommercialInvoice    bool        `json:"hasCommercialInvoice"`
+		HasCreditNote           bool        `json:"hasCreditNote"`
+		IsShippingPending       bool        `json:"isShippingPending"`
+		IsPB                    bool        `json:"isPB"`
+		IsPA                    bool        `json:"isPA"`
+		IsCC                    bool        `json:"isCC"`
+		MainFK                  int         `json:"mainFK"`
+		MainOrderTypeFK         int         `json:"mainOrderTypeFK"`
+		VoucherURL              interface{} `json:"voucherURL"`
+		ShipCountry             string      `json:"shipCountry"`
+		ShippingStatus          string      `json:"shippingStatus"`
+		OrderShippingStatus     string      `json:"orderShippingStatus"`
+		OrderTypeValue          interface{} `json:"orderTypeValue"`
+		PaidStatusValue         string      `json:"paidStatusValue"`
+		Quantity                int         `json:"quantity"`
+		Email                   interface{} `json:"email"`
+		Phone                   interface{} `json:"phone"`
+		ShipFirstName           interface{} `json:"shipFirstName"`
+		ShipLastName            interface{} `json:"shipLastName"`
+		MarkedPaidDate          string      `json:"markedPaidDate"`
+		Total                   float64     `json:"total"`
+		ConvTotal               float64     `json:"convTotal"`
+		ConvTotalFormat         string      `json:"convTotalFormat"`
+		SubTotal                int         `json:"subTotal"`
+		ConvSubtotal            int         `json:"convSubtotal"`
+		ShipTotal               float64     `json:"shipTotal"`
+		ConvShipTotal           float64     `json:"convShipTotal"`
+		Taxes                   float64     `json:"taxes"`
+		TaxLabel                string      `json:"taxLabel"`
+		ProductTax              float64     `json:"productTax"`
+		ShippingTax             float64     `json:"shippingTax"`
+		TotalProductTax         float64     `json:"totalProductTax"`
+		AdditionalTaxLabel      string      `json:"additionalTaxLabel"`
+		AdditionalTax           interface{} `json:"additionalTax"`
+		ConvTaxes               float64     `json:"convTaxes"`
+		OrderProcessingFees     interface{} `json:"orderProcessingFees"`
+		ConvOrderProcessingFees interface{} `json:"convOrderProcessingFees"`
+		Discount                int         `json:"discount"`
+		ConvDiscount            int         `json:"convDiscount"`
+		RefundAmount            int         `json:"refundAmount"`
+		ConvRefund              int         `json:"convRefund"`
+		SalesCampaignFK         interface{} `json:"salesCampaignFK"`
+		Paidstatusfk            int         `json:"paidstatusfk"`
+		DeliveryDate            interface{} `json:"deliveryDate"`
+		ShippingDetails         interface{} `json:"shippingDetails"`
+		OrderItems              interface{} `json:"orderItems"`
+		Payments                interface{} `json:"payments"`
+		IsPrepaidOrder          interface{} `json:"isPrepaidOrder"`
+		ShowInvoice             bool        `json:"showInvoice"`
+		ShowOrderInvoice        bool        `json:"showOrderInvoice"`
+		KrGuaranteeNo           string      `json:"krGuaranteeNo"`
+		WeChatOrderNumber       interface{} `json:"weChatOrderNumber"`
+		MemberID                interface{} `json:"memberID"`
+		Version                 int         `json:"-"`
 	}
 
 	err := app.readJSON(w, r, &input)
@@ -24,10 +87,72 @@ func (app *application) createOrderHandler(w http.ResponseWriter, r *http.Reques
 	}
 
 	order := &data.Order{
-		Title:   input.Title,
-		Year:    input.Year,
-		Runtime: input.Runtime,
-		Genres:  input.Genres,
+		ID:                      input.ID,
+		CreatedAt:               input.CreatedAt,
+		OrderDate:               input.OrderDate,
+		MainOrdersPK:            input.MainOrdersPK,
+		OrderType:               input.OrderType,
+		FinalOrderType:          input.FinalOrderType,
+		SiteURL:                 input.SiteURL,
+		EncOrderNumber:          input.EncOrderNumber,
+		CurrencySymbol:          input.CurrencySymbol,
+		CurrencyCode:            input.CurrencyCode,
+		PaidStatus:              input.PaidStatus,
+		HasTaxInvoice:           input.HasTaxInvoice,
+		HasCommercialInvoice:    input.HasCommercialInvoice,
+		HasCreditNote:           input.HasCreditNote,
+		IsShippingPending:       input.IsShippingPending,
+		IsPB:                    input.IsPB,
+		IsPA:                    input.IsPA,
+		IsCC:                    input.IsCC,
+		MainFK:                  input.MainFK,
+		MainOrderTypeFK:         input.MainOrderTypeFK,
+		VoucherURL:              input.VoucherURL,
+		ShipCountry:             input.ShipCountry,
+		ShippingStatus:          input.ShippingStatus,
+		OrderShippingStatus:     input.OrderShippingStatus,
+		OrderTypeValue:          input.OrderTypeValue,
+		PaidStatusValue:         input.PaidStatusValue,
+		Quantity:                input.Quantity,
+		Email:                   input.Email,
+		Phone:                   input.Phone,
+		ShipFirstName:           input.ShipFirstName,
+		ShipLastName:            input.ShipLastName,
+		MarkedPaidDate:          input.MarkedPaidDate,
+		Total:                   input.Total,
+		ConvTotal:               input.ConvTotal,
+		ConvTotalFormat:         input.ConvTotalFormat,
+		SubTotal:                input.SubTotal,
+		ConvSubtotal:            input.ConvSubtotal,
+		ShipTotal:               input.ShipTotal,
+		ConvShipTotal:           input.ConvShipTotal,
+		Taxes:                   input.Taxes,
+		TaxLabel:                input.TaxLabel,
+		ProductTax:              input.ProductTax,
+		ShippingTax:             input.ShippingTax,
+		TotalProductTax:         input.TotalProductTax,
+		AdditionalTaxLabel:      input.AdditionalTaxLabel,
+		AdditionalTax:           input.AdditionalTax,
+		ConvTaxes:               input.ConvTaxes,
+		OrderProcessingFees:     input.OrderProcessingFees,
+		ConvOrderProcessingFees: input.ConvOrderProcessingFees,
+		Discount:                input.Discount,
+		ConvDiscount:            input.ConvDiscount,
+		RefundAmount:            input.RefundAmount,
+		ConvRefund:              input.ConvRefund,
+		SalesCampaignFK:         input.SalesCampaignFK,
+		Paidstatusfk:            input.Paidstatusfk,
+		DeliveryDate:            input.DeliveryDate,
+		ShippingDetails:         input.ShippingDetails,
+		OrderItems:              input.OrderItems,
+		Payments:                input.Payments,
+		IsPrepaidOrder:          input.IsPrepaidOrder,
+		ShowInvoice:             input.ShowInvoice,
+		ShowOrderInvoice:        input.ShowOrderInvoice,
+		KrGuaranteeNo:           input.KrGuaranteeNo,
+		WeChatOrderNumber:       input.WeChatOrderNumber,
+		MemberID:                input.MemberID,
+		Version:                 input.Version,
 	}
 
 	v := validator.New()
@@ -59,7 +184,7 @@ func (app *application) showOrderHandler(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	order, err := app.models.Orders.Get(id)
+	order, err := app.models.Orders.GetByID(id)
 	if err != nil {
 		switch {
 		case errors.Is(err, data.ErrRecordNotFound):
@@ -83,7 +208,7 @@ func (app *application) updateOrderHandler(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	order, err := app.models.Orders.Get(id)
+	order, err := app.models.Orders.GetByID(id)
 	if err != nil {
 		switch {
 		case errors.Is(err, data.ErrRecordNotFound):
@@ -104,27 +229,6 @@ func (app *application) updateOrderHandler(w http.ResponseWriter, r *http.Reques
 	err = app.readJSON(w, r, &input)
 	if err != nil {
 		app.badRequestResponse(w, r, err)
-		return
-	}
-
-	if input.Title != nil {
-		order.Title = *input.Title
-	}
-
-	if input.Year != nil {
-		order.Year = *input.Year
-	}
-	if input.Runtime != nil {
-		order.Runtime = *input.Runtime
-	}
-	if input.Genres != nil {
-		order.Genres = input.Genres
-	}
-
-	v := validator.New()
-
-	if data.ValidateOrder(v, order); !v.Valid() {
-		app.failedValidationResponse(w, r, v.Errors)
 		return
 	}
 
