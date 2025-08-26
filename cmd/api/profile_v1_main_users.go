@@ -1,0 +1,36 @@
+package main
+
+func MainUsers_GetUser()                         {}
+func MainUsers_GetAwardsTypes()                  {}
+func MainUsers_GetUserAwards()                   {}
+func MainUsers_GetUserBySiteUrl()                {}
+func MainUsers_CanUserChangeSponsor()            {}
+func MainUsers_GetUserMarketingInfo()            {}
+func MainUsers_GetSignupUser()                   {}
+func MainUsers_CreateSignupUser()                {}
+func MainUsers_UpdateSignupUser()                {}
+func MainUsers_GetUserRecognitionInfo()          {}
+func MainUsers_AllowUserChangeUsername()         {}
+func MainUsers_GetESignatureInfo()               {}
+func MainUsers_SetESignatureInfo()               {}
+func MainUsers_IsNewSponsorValid()               {}
+func MainUsers_CheckUserDownline()               {}
+func MainUsers_GetRenewalStatusInfoAsync()       {}
+func MainUsers_GetUserHighestRank()              {}
+func MainUsers_CheckUserEnrollerTree()           {}
+func MainUsers_SyncCustomers()                   {}
+func MainUsers_GetReferrerInfo()                 {}
+func MainUsers_GetMainUserSponsorPlacementView() {}
+func MainUsers_GetRedirectRule()                 {}
+func MainUsers_GetUsers()                        {}
+func MainUsers_UpdateProfile()                   {}
+func MainUsers_UpdateMarketingInfo()             {}
+func MainUsers_UpdateUserRecognitionInfo()       {}
+func MainUsers_UpdateSoD()                       {}
+func MainUsers_AddUserAward()                    {}
+func MainUsers_ResetPassword()                   {}
+func MainUsers_ValidateEmail()                   {}
+func MainUsers_RemindUsername()                  {}
+func MainUsers_UpdatePassword()                  {}
+func MainUsers_ChangeUserSponsor()               {}
+func MainUsers_ChangeUsername()                  {}
