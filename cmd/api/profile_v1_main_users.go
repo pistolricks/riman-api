@@ -4,42 +4,107 @@ import (
 	"net/http"
 )
 
-func (app *application) getMainUsers_GetUser(w http.ResponseWriter, r *http.Request)                {}
-func (app *application) getMainUsers_GetAwardsTypes(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) getMainUsers_GetUserAwards(w http.ResponseWriter, r *http.Request)          {}
-func (app *application) getMainUsers_GetUserBySiteUrl(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getMainUsers_CanUserChangeSponsor(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) getMainUsers_GetUserMarketingInfo(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) getMainUsers_GetSignupUser(w http.ResponseWriter, r *http.Request)          {}
-func (app *application) postMainUsers_CreateSignupUser(w http.ResponseWriter, r *http.Request)      {}
-func (app *application) putMainUsers_UpdateSignupUser(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getMainUsers_GetUserRecognitionInfo(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getMainUsers_AllowUserChangeUsername(w http.ResponseWriter, r *http.Request) {
+func (app *application) getGetUser(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
 }
-func (app *application) getMainUsers_GetESignatureInfo(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) postMainUsers_SetESignatureInfo(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getMainUsers_IsNewSponsorValid(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) getMainUsers_CheckUserDownline(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) getMainUsers_GetRenewalStatusInfoAsync(w http.ResponseWriter, r *http.Request) {
+func (app *application) getGetAwardsTypes(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
 }
-func (app *application) getMainUsers_GetUserHighestRank(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) getMainUsers_CheckUserEnrollerTree(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getMainUsers_SyncCustomers(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) getMainUsers_GetReferrerInfo(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getMainUsers_GetMainUserSponsorPlacementView(w http.ResponseWriter, r *http.Request) {
+func (app *application) getGetUserAwards(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
 }
-func (app *application) getMainUsers_GetRedirectRule(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) getMainUsers_GetUsers(w http.ResponseWriter, r *http.Request)            {}
-func (app *application) putMainUsers_UpdateProfile(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) putMainUsers_UpdateMarketingInfo(w http.ResponseWriter, r *http.Request) {}
-func (app *application) putMainUsers_UpdateUserRecognitionInfo(w http.ResponseWriter, r *http.Request) {
+func (app *application) getGetUserBySiteUrl(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
 }
-func (app *application) putMainUsers_UpdateSoD(w http.ResponseWriter, r *http.Request)          {}
-func (app *application) postMainUsers_AddUserAward(w http.ResponseWriter, r *http.Request)      {}
-func (app *application) postMainUsers_ResetPassword(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) postMainUsers_ValidateEmail(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) postMainUsers_RemindUsername(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) postMainUsers_UpdatePassword(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) postMainUsers_ChangeUserSponsor(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postMainUsers_ChangeUsername(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) getMember_GetPaymentDetails(w http.ResponseWriter, r *http.Request)     {}
+func (app *application) getCanUserChangeSponsor(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetUserMarketingInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetSignupUser(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postCreateSignupUser(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) putUpdateSignupUser(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetUserRecognitionInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getAllowUserChangeUsername(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getGetESignatureInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postSetESignatureInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getIsNewSponsorValid(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getCheckUserDownline(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetRenewalStatusInfoAsync(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetUserHighestRank(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getCheckUserEnrollerTree(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getSyncCustomers(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetReferrerInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetMainUserSponsorPlacementView(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetRedirectRule(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetUsers(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) putUpdateProfile(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) putUpdateMarketingInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) putUpdateUserRecognitionInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) putUpdateSoD(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postAddUserAward(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postResetPassword(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postValidateEmail(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postRemindUsername(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postUpdatePassword(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postChangeUserSponsor(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) postChangeUsername(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}
+func (app *application) getGetPaymentDetails(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainUsersApi
+}

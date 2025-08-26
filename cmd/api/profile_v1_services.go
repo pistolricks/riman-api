@@ -4,74 +4,180 @@ import (
 	"net/http"
 )
 
-func (app *application) getAddress_AddressAutocomplete(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getAddress_AddressValidate(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) postAddress_AddressGetDetails(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) getApproval_GetApprovalTasks(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) putApproval_EditTicket(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) postDiscount_DiscountGenerate(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) putDiscount_DiscountExtend(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) getDynamicFields_GetDynamicFieldData(w http.ResponseWriter, r *http.Request) {
+func (app *application) getAddressAddressAutocomplete(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.AddressApi
 }
-func (app *application) getDynamicFields_GetJsonFormData(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postDynamicFields_GetDataSourceValuesForInputName(w http.ResponseWriter, r *http.Request) {
+func (app *application) getAddressAddressValidate(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.AddressApi
 }
-func (app *application) postDynamicFields_GetValueForInputName(w http.ResponseWriter, r *http.Request) {
+func (app *application) postAddressAddressGetDetails(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.AddressApi
 }
-func (app *application) postDynamicFields_SetDynamicFieldData(w http.ResponseWriter, r *http.Request) {
+func (app *application) getApprovalGetApprovalTasks(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.ApprovalApi
 }
-func (app *application) postDynamicFields_Validation(w http.ResponseWriter, r *http.Request)        {}
-func (app *application) postDynamicFields_ValidateFormInput(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postDynamicFields_OptionsSearchPost(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postDynamicFields_MigrateDynamicSignupData(w http.ResponseWriter, r *http.Request) {
+func (app *application) putApprovalEditTicket(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.ApprovalApi
 }
-func (app *application) postLacoreConnect_NotificationProcess(w http.ResponseWriter, r *http.Request) {
+func (app *application) postDiscountDiscountGenerate(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DiscountApi
 }
-func (app *application) getLegal_GetLegalDocument(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getLegal_CheckAgreements(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) postLegal_LogAgreedToDocumentsByMainPk(w http.ResponseWriter, r *http.Request) {
+func (app *application) putDiscountDiscountExtend(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DiscountApi
 }
-func (app *application) postLegal_LogAgreedToDocumentsByGuid(w http.ResponseWriter, r *http.Request) {
+func (app *application) getDynamicFieldsGetDynamicFieldData(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
 }
-func (app *application) getMainExtension_GetItalyCardData(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getOptIn_GetOptInSettings(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) putOptIn_UpdateOptInSettings(w http.ResponseWriter, r *http.Request)      {}
-func (app *application) deleteOptIn_Unsubscribe(w http.ResponseWriter, r *http.Request)           {}
-func (app *application) getR3Global_GetUser2x2Matrix(w http.ResponseWriter, r *http.Request)      {}
-func (app *application) putR3Global_Reset2x2MatrixTimer(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) getRepSite_GetRepsiteInfo(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) getRepSite_InvalidateRepSiteInfo(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) getRepSite_GetRepSiteMainPk(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getRepSite_GetAdWords(w http.ResponseWriter, r *http.Request)             {}
-func (app *application) getRepSite_GetImpressumInfo(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getRepSite_GetDistributorDiscountCodes(w http.ResponseWriter, r *http.Request) {
+func (app *application) getDynamicFieldsGetJsonFormData(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
 }
-func (app *application) postRepSite_SendReferrerEmail(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postRepSite_AddLead(w http.ResponseWriter, r *http.Request)           {}
-func (app *application) postRepSite_ValidateSiteUrl(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) getServerReports_GetPdf(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getSmartMobile_MoveMainUserToSmartMobile(w http.ResponseWriter, r *http.Request) {
+func (app *application) postDynamicFieldsGetDataSourceValuesForInputName(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
 }
-func (app *application) getSmartMobile_GetReportParameters(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) getSmartMobile_GetReports(w http.ResponseWriter, r *http.Request)           {}
-func (app *application) getSmartMobile_GetMessage(w http.ResponseWriter, r *http.Request)           {}
-func (app *application) putSmartMobile_UpdateAllMessages(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) putSmartMobile_UpdateMessage(w http.ResponseWriter, r *http.Request)        {}
-func (app *application) postSmartMobile_RegisterDeviceToken(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getSponsorship_GetSponsorSiteUrl(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) getSponsorship_TreeInDownline(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getSponsorship_GetSponsorshipTotal(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) getSync_GetDataToSync(w http.ResponseWriter, r *http.Request)               {}
-func (app *application) getSync_GetPushOrders(w http.ResponseWriter, r *http.Request)               {}
-func (app *application) getSync_GetQueryStatusOrders(w http.ResponseWriter, r *http.Request)        {}
-func (app *application) postSync_Sync(w http.ResponseWriter, r *http.Request)                       {}
-func (app *application) postSync_SetSyncStatus(w http.ResponseWriter, r *http.Request)              {}
-func (app *application) postSync_ProcessPushResults(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) postSync_ProcessQueryStatusResults(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) getTest_Get(w http.ResponseWriter, r *http.Request)                         {}
-func (app *application) getTest_NugetTester(w http.ResponseWriter, r *http.Request)                 {}
-func (app *application) getTraining_GetTrainingRecordsForUser(w http.ResponseWriter, r *http.Request) {
+func (app *application) postDynamicFieldsGetValueForInputName(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
 }
-func (app *application) postTraining_SetupTrainingRecordsForUser(w http.ResponseWriter, r *http.Request) {
+func (app *application) postDynamicFieldsSetDynamicFieldData(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
 }
-func (app *application) postTraining_RecordTrainingAction(w http.ResponseWriter, r *http.Request) {}
+func (app *application) postDynamicFieldsValidation(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
+}
+func (app *application) postDynamicFieldsValidateFormInput(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
+}
+func (app *application) postDynamicFieldsOptionsSearchPost(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
+}
+func (app *application) postDynamicFieldsMigrateDynamicSignupData(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.DynamicFieldsApi
+}
+func (app *application) postLacoreConnectNotificationProcess(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.LacoreConnectApi
+}
+func (app *application) getLegalGetLegalDocument(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.LegalApi
+}
+func (app *application) getLegalCheckAgreements(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.LegalApi
+}
+func (app *application) postLegalLogAgreedToDocumentsByMainPk(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.LegalApi
+}
+func (app *application) postLegalLogAgreedToDocumentsByGuid(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.LegalApi
+}
+func (app *application) getMainExtensionGetItalyCardData(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.MainExtensionApi
+}
+func (app *application) getOptInGetOptInSettings(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.OptInApi
+}
+func (app *application) putOptInUpdateOptInSettings(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.OptInApi
+}
+func (app *application) deleteOptInUnsubscribe(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.OptInApi
+}
+func (app *application) getR3GlobalGetUser2x2Matrix(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.R3GlobalApi
+}
+func (app *application) putR3GlobalReset2x2MatrixTimer(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.R3GlobalApi
+}
+func (app *application) getRepSiteGetRepsiteInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) getRepSiteInvalidateRepSiteInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) getRepSiteGetRepSiteMainPk(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) getRepSiteGetAdWords(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) getRepSiteGetImpressumInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) getRepSiteGetDistributorDiscountCodes(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) postRepSiteSendReferrerEmail(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) postRepSiteAddLead(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) postRepSiteValidateSiteUrl(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.RepSiteApi
+}
+func (app *application) getServerReportsGetPdf(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.ServerReportsApi
+}
+func (app *application) getSmartMobileMoveMainUserToSmartMobile(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SmartMobileApi
+}
+func (app *application) getSmartMobileGetReportParameters(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SmartMobileApi
+}
+func (app *application) getSmartMobileGetReports(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SmartMobileApi
+}
+func (app *application) getSmartMobileGetMessage(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SmartMobileApi
+}
+func (app *application) putSmartMobileUpdateAllMessages(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SmartMobileApi
+}
+func (app *application) putSmartMobileUpdateMessage(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SmartMobileApi
+}
+func (app *application) postSmartMobileRegisterDeviceToken(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SmartMobileApi
+}
+func (app *application) getSponsorshipGetSponsorSiteUrl(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SponsorshipApi
+}
+func (app *application) getSponsorshipTreeInDownline(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SponsorshipApi
+}
+func (app *application) getSponsorshipGetSponsorshipTotal(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SponsorshipApi
+}
+func (app *application) getSyncGetDataToSync(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SyncApi
+}
+func (app *application) getSyncGetPushOrders(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SyncApi
+}
+func (app *application) getSyncGetQueryStatusOrders(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SyncApi
+}
+func (app *application) postSyncSync(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SyncApi
+}
+func (app *application) postSyncSetSyncStatus(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SyncApi
+}
+func (app *application) postSyncProcessPushResults(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SyncApi
+}
+func (app *application) postSyncProcessQueryStatusResults(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.SyncApi
+}
+func (app *application) getTestGet(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.TestApi
+}
+func (app *application) getTestNugetTester(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.TestApi
+}
+func (app *application) getTrainingGetTrainingRecordsForUser(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.TrainingApi
+}
+func (app *application) postTrainingSetupTrainingRecordsForUser(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.TrainingApi
+}
+func (app *application) postTrainingRecordTrainingAction(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.TrainingApi
+}

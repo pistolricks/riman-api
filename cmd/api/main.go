@@ -14,9 +14,12 @@ import (
 	"time"
 
 	_ "github.com/pistolricks/riman-api/docs"
+	"github.com/pistolricks/riman-api/internal/cart_v1"
+	"github.com/pistolricks/riman-api/internal/cart_v2"
 	"github.com/pistolricks/riman-api/internal/data"
 	"github.com/pistolricks/riman-api/internal/mailer"
-	security "github.com/pistolricks/riman-api/internal/security"
+	"github.com/pistolricks/riman-api/internal/profile_v1"
+	"github.com/pistolricks/riman-api/internal/security"
 	"github.com/pistolricks/riman-api/internal/vcs"
 
 	_ "github.com/lib/pq"
@@ -54,12 +57,15 @@ type config struct {
 }
 
 type application struct {
-	config   config
-	logger   *slog.Logger
-	models   data.Models
-	security *security.APIClient
-	mailer   *mailer.Mailer
-	wg       sync.WaitGroup
+	config    config
+	logger    *slog.Logger
+	models    data.Models
+	security  *security.APIClient
+	cartV1    *cart_v1.APIClient
+	cartV2    *cart_v2.APIClient
+	profileV1 *profile_v1.APIClient
+	mailer    *mailer.Mailer
+	wg        sync.WaitGroup
 }
 
 func main() {

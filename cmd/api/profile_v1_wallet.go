@@ -4,58 +4,155 @@ import (
 	"net/http"
 )
 
-func (app *application) getWallet_GetWalletSettings(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getWallet_GetPayCardState(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) getWallet_GetPayCardReplaceState(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) postWallet_ReplacePayCard(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) getWallet_GetUserPaymentMethods(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) getWallet_GetIPayoutCardsBin(w http.ResponseWriter, r *http.Request)      {}
-func (app *application) getWallet_GetAccountDetails(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getWallet_GetPhotoIdData(w http.ResponseWriter, r *http.Request)          {}
-func (app *application) postWallet_UpdatePhotoIdData(w http.ResponseWriter, r *http.Request)      {}
-func (app *application) getWallet_GetUserBankBook(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) postWallet_UpdateUserBankBook(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) getWallet_GetUserBankDocument(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) postWallet_UpdateUserBankDocument(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getWallet_GetEFTLocalStatus(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getWallet_GetPersonalInfo(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) getWallet_GetAccountCurrencies(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) getWallet_GetFundRequestCheckRuns(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getWallet_GetPersonalInfoLocal(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) getWallet_GetFundsRequestSettings(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getWallet_GetUserPayoutMethods(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) getWallet_GetEFTRequiredDocuments(w http.ResponseWriter, r *http.Request) {}
-func (app *application) getWallet_GetIdentificationTypes(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) getWallet_GetBankCountries(w http.ResponseWriter, r *http.Request)        {}
-func (app *application) getWallet_GetWalletBalance(w http.ResponseWriter, r *http.Request)        {}
-func (app *application) getWallet_GetFundRequestInvoiceDetails(w http.ResponseWriter, r *http.Request) {
+func (app *application) getGetWalletSettings(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
 }
-func (app *application) getWallet_GetFundsRequest(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) postWallet_CreateFundRequest(w http.ResponseWriter, r *http.Request)      {}
-func (app *application) getWallet_GetAccountHistory(w http.ResponseWriter, r *http.Request)       {}
-func (app *application) getWallet_GetSignupTokens(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) postWallet_CreateSignupToken(w http.ResponseWriter, r *http.Request)      {}
-func (app *application) postWallet_RegisterPaycard(w http.ResponseWriter, r *http.Request)        {}
-func (app *application) postWallet_AddFundsGetRedirectUrl(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postWallet_AdminUpdatePhotoIdData(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postWallet_GetPayCardValidation(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) postWallet_GetEWalletLoginForm(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) postWallet_UpdateUserFundRequestInvoice(w http.ResponseWriter, r *http.Request) {
+func (app *application) getGetPayCardState(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
 }
-func (app *application) postWallet_SaveEFTBankInfo(w http.ResponseWriter, r *http.Request)         {}
-func (app *application) postWallet_DeactivateBankAccount(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) postWallet_UpdateUserPayoutMethods(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postWallet_ResetWalletPassword(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) postWallet_SaveEFTLocalBankInfo(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) deleteWallet_DeleteSignupToken(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) deleteWallet_DeleteFundRequest(w http.ResponseWriter, r *http.Request)     {}
-func (app *application) getWalletMember_GetSecurityQuestions(w http.ResponseWriter, r *http.Request) {
+func (app *application) getGetPayCardReplaceState(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
 }
-func (app *application) getWalletMember_GetQuestionsList(w http.ResponseWriter, r *http.Request) {}
-func (app *application) postWalletMember_SetQuestions(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) getWalletMember_CheckAttempts(w http.ResponseWriter, r *http.Request)    {}
-func (app *application) postWalletMember_CreateWalletAccount(w http.ResponseWriter, r *http.Request) {
+func (app *application) postReplacePayCard(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
 }
-func (app *application) postWalletMember_GetResetCode(w http.ResponseWriter, r *http.Request)   {}
-func (app *application) postWalletMember_ResetPassword(w http.ResponseWriter, r *http.Request)  {}
-func (app *application) postWalletMember_UpdatePassword(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getGetUserPaymentMethods(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetIPayoutCardsBin(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetAccountDetails(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetPhotoIdData(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postUpdatePhotoIdData(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetUserBankBook(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postUpdateUserBankBook(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetUserBankDocument(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postUpdateUserBankDocument(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetEFTLocalStatus(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetPersonalInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetAccountCurrencies(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetFundRequestCheckRuns(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetPersonalInfoLocal(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetFundsRequestSettings(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetUserPayoutMethods(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetEFTRequiredDocuments(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetIdentificationTypes(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetBankCountries(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetWalletBalance(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetFundRequestInvoiceDetails(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getGetFundsRequest(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postCreateFundRequest(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetAccountHistory(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getGetSignupTokens(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postCreateSignupToken(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postRegisterPaycard(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postAddFundsGetRedirectUrl(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postAdminUpdatePhotoIdData(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postGetPayCardValidation(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postGetEWalletLoginForm(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postUpdateUserFundRequestInvoice(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postSaveEFTBankInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postDeactivateBankAccount(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postUpdateUserPayoutMethods(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postResetWalletPassword(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) postSaveEFTLocalBankInfo(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) deleteDeleteSignupToken(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) deleteDeleteFundRequest(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletApi
+}
+func (app *application) getWalletMemberSecurityQuestions(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletMemberApi
+}
+func (app *application) getWalletMemberQuestionsList(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletMemberApi
+}
+func (app *application) postWalletMemberSetQuestions(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletMemberApi
+}
+func (app *application) getWalletMemberCheckAttempts(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletMemberApi
+}
+func (app *application) postWalletMemberCreateWalletAccount(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletMemberApi
+}
+func (app *application) postWalletMemberResetCode(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletMemberApi
+}
+func (app *application) postWalletMemberResetPassword(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletMemberApi
+}
+func (app *application) postWalletMemberUpdatePassword(w http.ResponseWriter, r *http.Request) {
+	app.profileV1.WalletMemberApi
+}
