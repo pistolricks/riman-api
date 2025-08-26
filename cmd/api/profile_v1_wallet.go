@@ -1,9 +1,6 @@
 package main
 
-import (
-	"net/http"
-)
-
+/*
 func (app *application) getGetWalletSettings(w http.ResponseWriter, r *http.Request) {
 	app.profileV1.WalletApi
 }
@@ -156,3 +153,4 @@ func (app *application) postWalletMemberResetPassword(w http.ResponseWriter, r *
 func (app *application) postWalletMemberUpdatePassword(w http.ResponseWriter, r *http.Request) {
 	app.profileV1.WalletMemberApi
 }
+*/

@@ -5,10 +5,10 @@ import (
 )
 
 func (app *application) getAddressAddressAutocomplete(w http.ResponseWriter, r *http.Request) {
-	app.profileV1.AddressApi
+	app.errorResponse(w, r, http.StatusNotImplemented, "not implemented")
 }
 func (app *application) getAddressAddressValidate(w http.ResponseWriter, r *http.Request) {
-	app.profileV1.AddressApi
+	app.errorResponse(w, r, http.StatusNotImplemented, "not implemented")
 }
 func (app *application) postAddressAddressGetDetails(w http.ResponseWriter, r *http.Request) {
 	app.profileV1.AddressApi
