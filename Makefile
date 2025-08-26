@@ -104,3 +104,24 @@ production/deploy/api:
 		&& sudo mv ~/Caddyfile /etc/caddy/ \
 		&& sudo systemctl reload caddy \
 	'
+
+# ==================================================================================== #
+# LOCAL CONVENIENCE TARGETS (Workspace-safe)
+# ==================================================================================== #
+
+## run: run the API with workspace
+.PHONY: run
+run:
+	go run ./cmd/api -db-dsn=${GREENLIGHT_DB_DSN}
+
+## build: build the cmd/api application
+.PHONY: build
+build:
+	@echo 'Building cmd/api...'
+	go build -ldflags="-s" -o=./bin/api ./cmd/api
+
+## build-all: build all packages
+.PHONY: build-all
+build-all:
+	@echo 'Building all packages...'
+	go build ./...
