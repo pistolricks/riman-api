@@ -90,32 +90,52 @@ func (app *application) getOrderClearMerchantPendingStatus(w http.ResponseWriter
 	if err := app.writeJSON(w, h.StatusCode, envelope{"result": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) getOrderConvertToLocalCurrency(w http.ResponseWriter, r *http.Request) {
-	app.cartV1.OrderApi.OrderConvertToLocalCurrency
-
+	q := r.URL.Query()
+	mainOrdersFKStr := q.Get("mainOrdersFK")
+	amountStr := q.Get("amount")
+	mainOrdersFK64, _ := strconv.ParseInt(mainOrdersFKStr, 10, 32)
+	amount, _ := strconv.ParseFloat(amountStr, 64)
+	res, h, err := app.cartV1.OrderApi.OrderConvertToLocalCurrency(r.Context(), int32(mainOrdersFK64), amount)
+	if err != nil { app.serverErrorResponse(w, r, err); return }
+	if err := app.writeJSON(w, h.StatusCode, envelope{"result": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) postOrderCreateAutoshipOrder(w http.ResponseWriter, r *http.Request) {
-	app.cartV1.OrderApi.OrderCreateAutoshipOrder
-
+	res, h, err := app.cartV1.OrderApi.OrderCreateAutoshipOrder(r.Context())
+	if err != nil { app.serverErrorResponse(w, r, err); return }
+	if err := app.writeJSON(w, h.StatusCode, envelope{"autoshipOrder": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) postOrderCreateOrder(w http.ResponseWriter, r *http.Request) {
-	app.cartV1.OrderApi.OrderCreateOrder
-
+	var model cart_v1.NewOrderFormModel
+	if err := app.readJSON(w, r, &model); err != nil { app.badRequestResponse(w, r, err); return }
+	res, h, err := app.cartV1.OrderApi.OrderCreateOrder(r.Context(), model)
+	if err != nil { app.serverErrorResponse(w, r, err); return }
+	if err := app.writeJSON(w, h.StatusCode, envelope{"order": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) postOrderCreateOrderClimbersClub(w http.ResponseWriter, r *http.Request) {
-	app.cartV1.OrderApi.OrderCreateOrderClimbersClub
-
+	res, h, err := app.cartV1.OrderApi.OrderCreateOrderClimbersClub(r.Context())
+	if err != nil { app.serverErrorResponse(w, r, err); return }
+	if err := app.writeJSON(w, h.StatusCode, envelope{"result": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) postOrderCreatePrepaidOrder(w http.ResponseWriter, r *http.Request) {
-	app.cartV1.OrderApi.OrderCreatePrepaidOrder
-
+	var products []cart_v1.CartItemFormModel
+	if err := app.readJSON(w, r, &products); err != nil { app.badRequestResponse(w, r, err); return }
+	res, h, err := app.cartV1.OrderApi.OrderCreatePrepaidOrder(r.Context(), products)
+	if err != nil { app.serverErrorResponse(w, r, err); return }
+	if err := app.writeJSON(w, h.StatusCode, envelope{"autoshipOrder": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) postOrderCreateRMA(w http.ResponseWriter, r *http.Request) {
-	app.cartV1.OrderApi.OrderCreateRMA
-
+	var model cart_v1.RmaFormModel
+	if err := app.readJSON(w, r, &model); err != nil { app.badRequestResponse(w, r, err); return }
+	res, h, err := app.cartV1.OrderApi.OrderCreateRMA(r.Context(), model)
+	if err != nil { app.serverErrorResponse(w, r, err); return }
+	if err := app.writeJSON(w, h.StatusCode, envelope{"rma": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) getOrderDeleteOrder(w http.ResponseWriter, r *http.Request) {
-	app.cartV1.OrderApi.OrderDeleteOrder
-
+	orderIdStr := r.URL.Query().Get("orderId")
+	orderId64, _ := strconv.ParseInt(orderIdStr, 10, 32)
+	res, h, err := app.cartV1.OrderApi.OrderDeleteOrder(r.Context(), int32(orderId64))
+	if err != nil { app.serverErrorResponse(w, r, err); return }
+	if err := app.writeJSON(w, h.StatusCode, envelope{"result": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) postOrderGet3Ds2(w http.ResponseWriter, r *http.Request) {
 	var model cart_v1.OrderComplete3Ds2Model
@@ -160,8 +180,7 @@ func (app *application) getOrderGetAvailableCoupons(w http.ResponseWriter, r *ht
 	if err := app.writeJSON(w, h.StatusCode, envelope{"coupons": res}, nil); err != nil { app.serverErrorResponse(w, r, err) }
 }
 func (app *application) getOrderGetBonusCreditLimit(w http.ResponseWriter, r *http.Request) {
-	app.cartV1.OrderApi.OrderGetBonusCreditLimit
-
+	app.errorResponse(w, r, http.StatusNotImplemented, "not implemented")
 }
 func (app *application) getOrderGetBraspagAntifraudScirpts(w http.ResponseWriter, r *http.Request) {
 	app.cartV1.OrderApi.OrderGetBraspagAntifraudScirpts
