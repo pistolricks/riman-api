@@ -4,6 +4,6 @@ import (
 	"net/http"
 )
 
-func (app *application) ShippingGet(w http.ResponseWriter, r *http.Request) {
+func (app *application) getShippingGet(w http.ResponseWriter, r *http.Request) {
 
 }

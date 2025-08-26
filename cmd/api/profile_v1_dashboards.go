@@ -1,27 +1,39 @@
 package main
 
-func Dashboards_GetTeamDetails()                     {}
-func Dashboards_GetDashboardPromotionId()            {}
-func Dashboards_GetCommisions()                      {}
-func Dashboards_GetPersonalInfo()                    {}
-func Dashboards_GetTopProducers()                    {}
-func Dashboards_GetBpSpSnapshot()                    {}
-func Dashboards_GetPersonalSnapshot()                {}
-func Dashboards_CheckIfShouldShowAgree()             {}
-func Dashboards_GetFlushPointsDaysLeft()             {}
-func Dashboards_GetEnrolleeSalesDetails()            {}
-func Dashboards_GetCustCommTier()                    {}
-func Dashboards_GetCustomers()                       {}
-func Dashboards_DashbortdPromoWinnersModel()         {}
-func Dashboards_GetDashboardPromoUserData()          {}
-func Dashboards_GetVolRSBSales()                     {}
-func Dashboards_GetDistMassiveActionBonusPromoData() {}
-func Dashboards_GetVolRSBCommisions()                {}
-func Dashboards_GetNewContactCounts()                {}
-func Dashboards_GetNewReps()                         {}
-func Dashboards_GetCommissionsTotal()                {}
-func Dashboards_GetTopSalesContact()                 {}
-func Dashboards_GetMonthlySalesData()                {}
-func Dashboards_GetMonthlyProductData()              {}
-func Dashboards_GetEventTicketsSnapshots()           {}
-func Dashboards_GetSmartNewsFeed()                   {}
+import (
+	"net/http"
+)
+
+func (app *application) getDashboards_GetTeamDetails(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getDashboards_GetDashboardPromotionId(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDashboards_GetCommisions(w http.ResponseWriter, r *http.Request)       {}
+func (app *application) getDashboards_GetPersonalInfo(w http.ResponseWriter, r *http.Request)     {}
+func (app *application) getDashboards_GetTopProducers(w http.ResponseWriter, r *http.Request)     {}
+func (app *application) getDashboards_GetBpSpSnapshot(w http.ResponseWriter, r *http.Request)     {}
+func (app *application) getDashboards_GetPersonalSnapshot(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getDashboards_CheckIfShouldShowAgree(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDashboards_GetFlushPointsDaysLeft(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDashboards_GetEnrolleeSalesDetails(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDashboards_GetCustCommTier(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getDashboards_GetCustomers(w http.ResponseWriter, r *http.Request)    {}
+func (app *application) getDashboards_DashbortdPromoWinnersModel(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDashboards_GetDashboardPromoUserData(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDashboards_GetVolRSBSales(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getDashboards_GetDistMassiveActionBonusPromoData(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDashboards_GetVolRSBCommisions(w http.ResponseWriter, r *http.Request)   {}
+func (app *application) getDashboards_GetNewContactCounts(w http.ResponseWriter, r *http.Request)   {}
+func (app *application) getDashboards_GetNewReps(w http.ResponseWriter, r *http.Request)            {}
+func (app *application) getDashboards_GetCommissionsTotal(w http.ResponseWriter, r *http.Request)   {}
+func (app *application) getDashboards_GetTopSalesContact(w http.ResponseWriter, r *http.Request)    {}
+func (app *application) getDashboards_GetMonthlySalesData(w http.ResponseWriter, r *http.Request)   {}
+func (app *application) getDashboards_GetMonthlyProductData(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getDashboards_GetEventTicketsSnapshots(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDashboards_GetSmartNewsFeed(w http.ResponseWriter, r *http.Request) {}

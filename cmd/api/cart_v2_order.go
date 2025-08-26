@@ -4,39 +4,39 @@ import (
 	"net/http"
 )
 
-func (app *application) OrderAddCCPaymentToOrder(w http.ResponseWriter, r *http.Request) {
+func (app *application) postOrderAddCCPaymentToOrderV2(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderAddProduct(w http.ResponseWriter, r *http.Request) {
+func (app *application) postOrderAddProductV2(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderApplyInterativeDiscount(w http.ResponseWriter, r *http.Request) {
+func (app *application) postOrderApplyInteractiveDiscount(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderCreateOrder(w http.ResponseWriter, r *http.Request) {
+func (app *application) postOrderCreateOrderV2(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderGetOrderDetails(w http.ResponseWriter, r *http.Request) {
+func (app *application) getOrderGetOrderDetails(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderGetOrderTaxAmountString(w http.ResponseWriter, r *http.Request) {
+func (app *application) getOrderGetOrderTaxAmountString(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderGetOrderType(w http.ResponseWriter, r *http.Request) {
+func (app *application) getOrderGetOrderType(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderSetShippingOnAutoShipOrder(w http.ResponseWriter, r *http.Request) {
+func (app *application) putOrderSetShippingOnAutoShipOrder(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderSetShippingOnOrder(w http.ResponseWriter, r *http.Request) {
+func (app *application) putOrderSetShippingOnOrderV2(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderUpdateOrderItemsFromCart(w http.ResponseWriter, r *http.Request) {
+func (app *application) putOrderUpdateOrderItemsFromCart(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderUpdateOrderShippingAddress(w http.ResponseWriter, r *http.Request) {
+func (app *application) putOrderUpdateOrderShippingAddressV2(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) OrderValidateRetailSignup(w http.ResponseWriter, r *http.Request) {
+func (app *application) getOrderValidateRetailSignup(w http.ResponseWriter, r *http.Request) {
 
 }

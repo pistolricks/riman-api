@@ -1,52 +1,77 @@
 package main
 
-func Address_AddressAutocomplete() {}
-func Address_AddressValidate()     {}
-func Address_AddressGetDetails()   {}
+import (
+	"net/http"
+)
 
-func Approval_GetApprovalTasks() {}
-func Approval_EditTicket()       {}
-
-func Discount_DiscountGenerate() {}
-func Discount_DiscountExtend()   {}
-
-func DynamicFields_GetDynamicFieldData()             {}
-func DynamicFields_GetJsonFormData()                 {}
-func DynamicFields_GetDataSourceValuesForInputName() {}
-func DynamicFields_GetValueForInputName()            {}
-func DynamicFields_SetDynamicFieldData()             {}
-func DynamicFields_Validation()                      {}
-func DynamicFields_ValidateFormInput()               {}
-func DynamicFields_OptionsSearchPost()               {}
-func DynamicFields_MigrateDynamicSignupData()        {}
-
-func Sync_GetDataToSync()             {}
-func Sync_GetPushOrders()             {}
-func Sync_GetQueryStatusOrders()      {}
-func Sync_Sync()                      {}
-func Sync_SetSyncStatus()             {}
-func Sync_ProcessPushResults()        {}
-func Sync_ProcessQueryStatusResults() {}
-
-func Test_Get()         {}
-func Test_NugetTester() {}
-
-func Training_GetTrainingRecordsForUser()   {}
-func Training_SetupTrainingRecordsForUser() {}
-func Training_RecordTrainingAction()        {}
-
-func Sponsorship_GetSponsorSiteUrl()   {}
-func Sponsorship_TreeInDownline()      {}
-func Sponsorship_GetSponsorshipTotal() {}
-
-func Legal_GetLegalDocument()             {}
-func Legal_CheckAgreements()              {}
-func Legal_LogAgreedToDocumentsByMainPk() {}
-func Legal_LogAgreedToDocumentsByGuid()   {}
-
-func MainExtension_GetItalyCardData() {}
-
-func R3Global_GetUser2x2Matrix()    {}
-func R3Global_Reset2x2MatrixTimer() {}
-
-func ServerReports_GetPdf() {}
+func (app *application) getAddress_AddressAutocomplete(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getAddress_AddressValidate(w http.ResponseWriter, r *http.Request)     {}
+func (app *application) postAddress_AddressGetDetails(w http.ResponseWriter, r *http.Request)  {}
+func (app *application) getApproval_GetApprovalTasks(w http.ResponseWriter, r *http.Request)   {}
+func (app *application) putApproval_EditTicket(w http.ResponseWriter, r *http.Request)         {}
+func (app *application) postDiscount_DiscountGenerate(w http.ResponseWriter, r *http.Request)  {}
+func (app *application) putDiscount_DiscountExtend(w http.ResponseWriter, r *http.Request)     {}
+func (app *application) getDynamicFields_GetDynamicFieldData(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getDynamicFields_GetJsonFormData(w http.ResponseWriter, r *http.Request) {}
+func (app *application) postDynamicFields_GetDataSourceValuesForInputName(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) postDynamicFields_GetValueForInputName(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) postDynamicFields_SetDynamicFieldData(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) postDynamicFields_Validation(w http.ResponseWriter, r *http.Request)        {}
+func (app *application) postDynamicFields_ValidateFormInput(w http.ResponseWriter, r *http.Request) {}
+func (app *application) postDynamicFields_OptionsSearchPost(w http.ResponseWriter, r *http.Request) {}
+func (app *application) postDynamicFields_MigrateDynamicSignupData(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) postLacoreConnect_NotificationProcess(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getLegal_GetLegalDocument(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getLegal_CheckAgreements(w http.ResponseWriter, r *http.Request)  {}
+func (app *application) postLegal_LogAgreedToDocumentsByMainPk(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) postLegal_LogAgreedToDocumentsByGuid(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getMainExtension_GetItalyCardData(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getOptIn_GetOptInSettings(w http.ResponseWriter, r *http.Request)         {}
+func (app *application) putOptIn_UpdateOptInSettings(w http.ResponseWriter, r *http.Request)      {}
+func (app *application) deleteOptIn_Unsubscribe(w http.ResponseWriter, r *http.Request)           {}
+func (app *application) getR3Global_GetUser2x2Matrix(w http.ResponseWriter, r *http.Request)      {}
+func (app *application) putR3Global_Reset2x2MatrixTimer(w http.ResponseWriter, r *http.Request)   {}
+func (app *application) getRepSite_GetRepsiteInfo(w http.ResponseWriter, r *http.Request)         {}
+func (app *application) getRepSite_InvalidateRepSiteInfo(w http.ResponseWriter, r *http.Request)  {}
+func (app *application) getRepSite_GetRepSiteMainPk(w http.ResponseWriter, r *http.Request)       {}
+func (app *application) getRepSite_GetAdWords(w http.ResponseWriter, r *http.Request)             {}
+func (app *application) getRepSite_GetImpressumInfo(w http.ResponseWriter, r *http.Request)       {}
+func (app *application) getRepSite_GetDistributorDiscountCodes(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) postRepSite_SendReferrerEmail(w http.ResponseWriter, r *http.Request) {}
+func (app *application) postRepSite_AddLead(w http.ResponseWriter, r *http.Request)           {}
+func (app *application) postRepSite_ValidateSiteUrl(w http.ResponseWriter, r *http.Request)   {}
+func (app *application) getServerReports_GetPdf(w http.ResponseWriter, r *http.Request)       {}
+func (app *application) getSmartMobile_MoveMainUserToSmartMobile(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) getSmartMobile_GetReportParameters(w http.ResponseWriter, r *http.Request)  {}
+func (app *application) getSmartMobile_GetReports(w http.ResponseWriter, r *http.Request)           {}
+func (app *application) getSmartMobile_GetMessage(w http.ResponseWriter, r *http.Request)           {}
+func (app *application) putSmartMobile_UpdateAllMessages(w http.ResponseWriter, r *http.Request)    {}
+func (app *application) putSmartMobile_UpdateMessage(w http.ResponseWriter, r *http.Request)        {}
+func (app *application) postSmartMobile_RegisterDeviceToken(w http.ResponseWriter, r *http.Request) {}
+func (app *application) getSponsorship_GetSponsorSiteUrl(w http.ResponseWriter, r *http.Request)    {}
+func (app *application) getSponsorship_TreeInDownline(w http.ResponseWriter, r *http.Request)       {}
+func (app *application) getSponsorship_GetSponsorshipTotal(w http.ResponseWriter, r *http.Request)  {}
+func (app *application) getSync_GetDataToSync(w http.ResponseWriter, r *http.Request)               {}
+func (app *application) getSync_GetPushOrders(w http.ResponseWriter, r *http.Request)               {}
+func (app *application) getSync_GetQueryStatusOrders(w http.ResponseWriter, r *http.Request)        {}
+func (app *application) postSync_Sync(w http.ResponseWriter, r *http.Request)                       {}
+func (app *application) postSync_SetSyncStatus(w http.ResponseWriter, r *http.Request)              {}
+func (app *application) postSync_ProcessPushResults(w http.ResponseWriter, r *http.Request)         {}
+func (app *application) postSync_ProcessQueryStatusResults(w http.ResponseWriter, r *http.Request)  {}
+func (app *application) getTest_Get(w http.ResponseWriter, r *http.Request)                         {}
+func (app *application) getTest_NugetTester(w http.ResponseWriter, r *http.Request)                 {}
+func (app *application) getTraining_GetTrainingRecordsForUser(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) postTraining_SetupTrainingRecordsForUser(w http.ResponseWriter, r *http.Request) {
+}
+func (app *application) postTraining_RecordTrainingAction(w http.ResponseWriter, r *http.Request) {}

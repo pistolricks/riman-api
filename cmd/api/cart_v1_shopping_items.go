@@ -4,36 +4,36 @@ import (
 	"net/http"
 )
 
-func (app *application) ShoppingItemsAddAffiliateItems(w http.ResponseWriter, r *http.Request) {
+func (app *application) postShoppingItemsAddAffiliateItems(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsAddItem(w http.ResponseWriter, r *http.Request) {
+func (app *application) postShoppingItemsAddItem(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsAddItems(w http.ResponseWriter, r *http.Request) {
+func (app *application) postShoppingItemsAddItems(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsAddQuickCartItems(w http.ResponseWriter, r *http.Request) {
+func (app *application) postShoppingItemsAddQuickCartItems(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsGetCartItems(w http.ResponseWriter, r *http.Request) {
+func (app *application) getShoppingItemsGetCartItems(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsPatchItem(w http.ResponseWriter, r *http.Request) {
+func (app *application) patchShoppingItemsPatchItem(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsRemoveCartItems(w http.ResponseWriter, r *http.Request) {
+func (app *application) deleteShoppingItemsRemoveCartItems(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsRemoveCartItemsList(w http.ResponseWriter, r *http.Request) {
+func (app *application) deleteShoppingItemsRemoveCartItemsList(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsRemoveItem(w http.ResponseWriter, r *http.Request) {
+func (app *application) deleteShoppingItemsRemoveItem(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsUpdateItem(w http.ResponseWriter, r *http.Request) {
+func (app *application) putShoppingItemsUpdateItem(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ShoppingItemsValidateCartItems(w http.ResponseWriter, r *http.Request) {
+func (app *application) getShoppingItemsValidateCartItems(w http.ResponseWriter, r *http.Request) {
 
 }

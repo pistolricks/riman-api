@@ -4,60 +4,60 @@ import (
 	"net/http"
 )
 
-func (app *application) ProductGetBestSellers(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetBestSellers(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetBestsellers(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetBestsellers(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetBrandSpotlight(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetBrandSpotlight(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetCAPHeadersWithCVRanges(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetCAPHeadersWithCVRanges(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetCategories(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetCategories(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetCategoryById(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetCategoryById(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetMayLoveProducts(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetMayLoveProducts(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetProductBrands(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetProductBrands(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetProductById(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetProductById(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetProductById_1(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetProductById_1(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetProductFunctions(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetProductFunctions(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetProducts(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetProducts(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetRemainingProductQuantities(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetRemainingProductQuantities(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetRemainingSignUpProductQuantities(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetRemainingSignUpProductQuantities(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetRitualProducts(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetRitualProducts(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetRituals(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetRituals(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductGetSubCategories(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductGetSubCategories(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductInvalidateCache(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductInvalidateCache(w http.ResponseWriter, r *http.Request) {
 
 }
-func (app *application) ProductSearchProduct(w http.ResponseWriter, r *http.Request) {
+func (app *application) getProductSearchProduct(w http.ResponseWriter, r *http.Request) {
 
 }
