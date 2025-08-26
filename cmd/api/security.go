@@ -12,7 +12,7 @@ import (
 
 func (app *application) secureVendorLoginHandler(w http.ResponseWriter, r *http.Request) {
 	var input struct {
-		Username string `json:"username"`
+		UserName string `json:"userName"`
 		Password string `json:"password"`
 	}
 
@@ -24,7 +24,7 @@ func (app *application) secureVendorLoginHandler(w http.ResponseWriter, r *http.
 
 	v := validator.New()
 
-	data.ValidateUsername(v, input.Username)
+	data.ValidateUsername(v, input.UserName)
 	data.ValidatePasswordPlaintext(v, input.Password)
 
 	if !v.Valid() {
@@ -32,7 +32,7 @@ func (app *application) secureVendorLoginHandler(w http.ResponseWriter, r *http.
 		return
 	}
 
-	client, err := app.models.Clients.GetByUsername(input.Username)
+	client, err := app.models.Clients.GetByUsername(input.UserName)
 	if err != nil {
 		switch {
 		case errors.Is(err, data.ErrRecordNotFound):
@@ -55,7 +55,7 @@ func (app *application) secureVendorLoginHandler(w http.ResponseWriter, r *http.
 	}
 
 	tokenRequest := security.TokenRequestModel{
-		UserName: input.Username,
+		UserName: input.UserName,
 		Password: input.Password,
 	}
 
